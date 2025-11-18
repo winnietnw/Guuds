@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guuds Login</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<header class="navbar">
+    <div class="nav-inner">
+        <div class="logo">
+            <span class="logo-pill">Guuds</span>
+            <span class="gradient-text">K-pop Community Market</span>
+
+        </div>
+
+        <nav class="nav-links">
+            <a href="Home.html">Home</a>
+            <a href="Marketplace.html">Marketplace</a>
+            <a href="Search.html">Search</a>
+            <a href="Community.html">Communities</a>
+            <a href="About.html">Team</a>
+        </nav>
+
+        <div class="circle">
+            <i class="material-icons">person</i>
+        </div>
+</header>
+
+<body>
+    <div class="payment-wrapper">
+        <div class="payment-card">
+        <h1>Payment Method</h1>
+        <div class="box">
+            <button class="toggle-btn" onclick="window.location.href='02Payment.html'">Pay with Credit Card</button>
+            <button class="toggle-btn " onclick="window.location.href='02PaymentQR.html'">Pay with QR
+                Code</button>
+        </div>
+            <form id="cardForm" class="card-form" novalidate>
+                <div class="wrapper">
+                    <div class="box a">
+                        <label>Card Number</label>
+                        <input type="tel" required>
+                    </div>
+
+                    <div class="box b">
+                        <label>Expiration Date</label>
+                        <input type="text" placeholder="MM/YY" maxlength="5" required>
+                    </div>
+                    <div class="box c">
+                        <label>CVV</label>
+                        <input type="tel" placeholder="XXX" maxlength="3" required>
+                    </div>
+                    <div class="box d">
+                        <label>Country</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="box e">
+                        <label>Postal Code</label>
+                        <input type="text" required>
+                    </div>
+                </div>
+
+                <div class="payment-actions">
+                    <button id="confirm" class="btn-confirm " type="button"
+                        onclick="window.location.href='02Payment-Success.html'">Confirm</button>
+                    <button id="cancel" class="btn-cancel" type="button" onclick="history.back()">Cancel</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</body>
+
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="logo">
+            <span class="logo-pill">Guuds</span>
+            <span class="logo-text">K-pop Community Market</span>
+        </div>
+
+        <ul class="footer-links">
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </div>
+</footer>
+
+
+</html>

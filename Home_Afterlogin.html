@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guuds K-pop Community Marketplace</title>
+    <style>
+        /* === CSS Variables and Base Styles === */
+        :root {
+            /* General Theme Colors from JSX */
+            --vibrant-purple: #845ff4;      /* rgba(132,95,244,1) */
+            --vibrant-pink: #ef5da8;        /* rgba(239,93,168,1) */
+            --light-purple: #a5a6f6;        /* rgba(165,166,246,1) */
+            --link-blue: #3603d1;           /* Active Link Color */
+            --active-link-bg: #e4e4ff;      /* Light background for active link (bg-[#e4e4ff]) */
+            --text-gray: #000000ab;         /* Text for description */
+            --input-border: #b3b3b3;
+            --white: #fff;
+            
+            /* Gradients */
+            --logo-gradient: linear-gradient(90deg, var(--vibrant-pink) 0%, var(--vibrant-purple) 100%);
+            --hero-title-gradient: linear-gradient(90deg, var(--vibrant-purple) 14%, var(--vibrant-pink) 85%);
+            --header-bg-url: url('https://c.animaapp.com/mhrcnimxAJQP9m/img/rectangle-56.png');
+            --footer-bg-url: url('https://c.animaapp.com/mi1npewox6dlCb/img/rectangle-57.svg');
+            --link-text-gradient: linear-gradient(92deg, rgba(132, 95, 244, 1) 12%, rgba(239, 93, 168, 1) 65%); 
+            --marketplace-card-icon-gradient: linear-gradient(90deg, var(--vibrant-pink) 0%, var(--vibrant-purple) 100%);
+            
+            /* NEW: Darker Gradient for all main action buttons */
+            --action-button-gradient: linear-gradient(90deg, #704cd0 0%, #d84c98 100%); 
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica', Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--white);
+            color: #000;
+        }
+        
+        /* --- Animation Keyframes (Simulating fade-in) --- */
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(-1rem);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animated-element {
+            opacity: 0;
+            transform: translateY(-1rem);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Fallback transition */
+        }
+        
+        /* Apply CSS animation based on JS timing */
+        .animate-start {
+            animation: fade-in 0.6s ease-out forwards;
+        }
+
+        /* --- Header Styles --- */
+        .header {
+            width: 100%;
+            height: 123px;
+            background-image: var(--header-bg-url);
+            background-size: cover;
+            background-position: center;
+            border-bottom: 1px solid #ccc; /* Added border for visibility */
+        }
+        
+        .header-nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 44px; /* px-11 */
+            height: 100%;
+        }
+
+        .header .logo-group {
+            display: flex;
+            align-items: center;
+            gap: 0;
+        }
+
+        .header .logo-tagline {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem; /* gap-3 */
+        }
+
+        .header .logo-box {
+            width: 104px;
+            height: 36px; 
+            border-radius: 10px;
+            background: var(--logo-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .header .logo-text {
+            font-weight: 800; /* SF_Pro-Heavy */
+            color: var(--white);
+            font-size: 25.8px;
+            white-space: nowrap;
+        }
+
+        .header .login-text {
+            background-color: #00000096; /* bg-[#00000096] */
+            border-radius: 10px;
+            padding: 2px 8px; /* px-2 py-1 */
+            font-weight: 400; /* SF_Pro-Regular */
+            color: var(--white);
+            font-size: 20.6px;
+        }
+
+        .header-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem; /* gap-8 */
+        }
+
+        .header-links a, .header-links span {
+            text-decoration: none;
+            font-weight: 400; /* SF_Pro-Regular */
+            font-size: 20.6px;
+            color: #000;
+            transition: all 0.2s;
+            padding: 4px 12px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        
+        .header-links span:not(.active-link):hover,
+        .header-links a:not(.active-link):hover {
+            color: var(--link-blue);
+        }
+
+        /* General Active Link Style (for Home and Search) */
+        .header-links .active-link {
+            color: var(--link-blue);
+            background-color: var(--active-link-bg);
+            /* Added Box Shadow for 'Search' style box effect */
+        }
+
+        .header-avatar img {
+            width: 40px;
+            height: 40px;
+        }
+
+        /* --- FIX: Combined Nav Links and Avatar container to ensure alignment --- */
+        .nav-avatar-group {
+            display: flex; 
+            align-items: center; 
+            gap: 2rem; /* Ensure spacing between the last link and the avatar */
+        }
+
+        /* --- Hero Section --- */
+        .hero-section {
+            position: relative;
+            width: 100%;
+            padding-top: 97px;
+            padding-bottom: 176px;
+        }
+        
+        .hero-background-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 417px;
+            object-fit: cover;
+            content: url('https://c.animaapp.com/mhrcnimxAJQP9m/img/rectangle-4.svg');
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem; /* gap-6 */
+            padding: 0 1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            /* FIXED: Increased width to accommodate 'Marketplace' on one line */
+            width: 900px; 
+            font-size: 59.9px;
+            text-align: center;
+            white-space: nowrap;
+            /* Gradient Text Styling */
+            background-image: var(--hero-title-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-fill-color: transparent;
+            font-weight: 400;
+        }
+
+        .hero-description {
+            width: 772px;
+            font-size: 18.1px;
+            text-align: center;
+            letter-spacing: -0.54px;
+            line-height: 1.2;
+            font-weight: 400;
+        }
+
+        /* --- Hero Button Styles (APPLIED TO ALL MAIN ACTION BUTTONS) --- */
+        .hero-button {
+            height: 52px;
+            width: 202px;
+            
+            /* FIXED: Use Darker CSS Gradient */
+            background: var(--action-button-gradient);
+            background-size: cover;
+            background-position: center;
+            
+            /* FIXED: Remove all visible border/glow effects and shadow */
+            border: none;
+            box-shadow: none; 
+            text-decoration: none; /* Ensure no text underline */
+            
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .hero-button span {
+            font-weight: 600; /* SF_Pro-Semibold */
+            color: var(--white);
+            font-size: 18.1px;
+            letter-spacing: -0.54px;
+        }
+        
+        .hero-button svg {
+            width: 12px;
+            height: 12px;
+            margin-left: 8px;
+            stroke: var(--white);
+        }
+
+        /* --- General Marketplace/Community Section Styles --- */
+        main {
+             /* Ensure main content takes up remaining vertical space */
+             flex-grow: 1; 
+        }
+
+        .section-padding {
+            position: relative;
+            width: 100%;
+            /* FIXED: Use padding for outer spacing, allowing inner scroll containers to use full width */
+            padding: 0 44px 48px 44px; 
+        }
+        
+        .section-title {
+            font-weight: bold;
+            font-size: 52px;
+            white-space: nowrap;
+            margin-bottom: 32px; /* mb-8 */
+        }
+        
+        .section-button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 32px; /* mt-8 */
+            padding: 0; 
+            border: none;
+            box-shadow: none;
+        }
+
+        /* --- View More Buttons (Use Hero Button Style) --- */
+        .section-button {
+            height: 33px;
+            width: 250px;
+            background: var(--action-button-gradient); 
+            background-size: cover;
+            background-position: center;
+            border: none;
+            box-shadow: none; 
+            
+            /* UPDATED: Reduced border-radius */
+            text-decoration: none;
+            border-radius: 10px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .section-button span {
+            font-weight: 600; /* SF_Pro-Semibold */
+            color: var(--white);
+            font-size: 18.1px;
+            letter-spacing: -0.54px;
+        }
+
+        .section-button svg {
+            width: 12px;
+            height: 12px;
+            margin-left: 8px;
+            stroke: var(--white);
+        }
+
+        /* --- Community/Marketplace Card Styles --- */
+        .scroll-area {
+            overflow-x: auto; 
+            padding-bottom: 16px;
+            width: 100%;
+        }
+
+        .scroll-container {
+            display: flex;
+            gap: 35px;
+            flex-wrap: nowrap;
+            min-width: max-content;
+        }
+
+        .join-btn.joined {
+            background-color: #4caf50;
+            cursor: default; /* ไม่ให้ hover pointer */
+        }
+        
+        .card-wrapper {
+            flex-shrink: 0; 
+            width: 240px; /* w-60 */
+            height: 347px; 
+            background-color: var(--white);
+            border-radius: 15px; 
+            border: 1px solid #d9d9d9;
+            box-shadow: 0 4px 9.3px rgba(0, 0, 0, 0.05); /* shadow-[0px_4px_9.3px_#00000021] */
+        }
+
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem; /* gap-4 */
+            padding: 1rem; /* p-4 */
+            height: 100%;
+        }
+
+        .card-image {
+            position: relative;
+            width: 100%;
+            height: 247px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 6px;
+        }
+
+        .card-details {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            align-items: flex-start;
+            gap: 0.5rem; /* gap-2 */
+        }
+
+        .card-details .text {
+            font-size: 16px;
+            color: #1e1e1e;
+            font-weight: 400;
+        }
+
+        .card-details .price {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* Hide ScrollBar for cleaner look */
+        .scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+        .scroll-area {
+            overflow-x: auto; /* <-- เปิด scroll แนวนอน */
+            padding-bottom: 16px; /* สำหรับ scroll bar spacing */
+            width: 100%;
+        }
+
+        .scroll-container {
+            display: flex;
+            gap: 35px;
+            flex-wrap: nowrap;
+            min-width: max-content;
+        }
+
+        /* --- Marketplace Community Cards (Specific styles from MarketplaceSection) --- */
+        .marketplace-card-wrapper {
+            min-width: 374px;
+            flex-shrink: 0;
+            border-radius: 15px; 
+            border: 1.07px solid #d9d9d9;
+            overflow: hidden;
+        }
+
+        .marketplace-card-image {
+            position: relative;
+            height: 207px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .marketplace-card-badge {
+            position: absolute;
+            top: 17px;
+            right: 19px;
+            height: 29px;
+            padding: 0 16px;
+            background-color: #4CAF50;
+            color: var(--white);
+            /* UPDATED: Reduced border-radius for badge (from 8px to 5px) */
+            border-radius: 5px; 
+            font-weight: 400; 
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .marketplace-card-title {
+            position: absolute;
+            bottom: 19px;
+            left: 19px;
+            font-weight: 400; 
+            color: var(--white);
+            font-size: 32px;
+            white-space: nowrap;
+        }
+
+        .marketplace-card-body {
+            padding: 19px;
+            background-color: var(--white);
+        }
+        
+        .marketplace-card-description {
+            font-weight: 500;
+            color: #585858;
+            font-size: 14px;
+            margin-bottom: 7px;
+        }
+        
+        .marketplace-card-members {
+            font-weight: 500;
+            color: #585858;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+        
+        .marketplace-card-actions {
+            display: flex;
+            gap: 5px;
+        }
+
+        .marketplace-card-actions button {
+            height: 29px;
+            padding: 0 16px;
+            /* UPDATED: Reduced border-radius for buttons inside the card (from 8px to 5px) */
+            border-radius: 5px; 
+            font-weight: 400; /* Text is normal/regular */
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .marketplace-card-actions .join-btn {
+            background-color: #585858;
+            color: var(--white);
+            border: none;
+        }
+
+        .marketplace-card-actions .leave-btn {
+            background-color: transparent;
+            color: #000;
+            /* FIXED: Remove border from "Join" (which is the .leave-btn when not joined) */
+            border: none; 
+        }
+        
+        /* Apply subtle glow/outline to View button on hover, mirroring the image */
+        .marketplace-card-actions .join-btn:hover {
+            box-shadow: 0 0 5px rgba(132, 95, 244, 0.5), inset 0 0 2px rgba(132, 95, 244, 0.7);
+        }
+
+
+        /* --- Why Choose Guuds Section --- */
+        .why-choose-section {
+            position: relative;
+            width: 100%;
+            background-color: #fbfbfb; /* bg-[#fbfbfb] */
+            padding: 4rem 0; /* py-16 */
+        }
+        
+        .feature-grid-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem; /* gap-6 */
+            padding: 0 1rem;
+        }
+        
+        .feature-subtitle {
+            font-weight: 600; /* SF_Pro-Semibold */
+            font-size: 18.1px;
+            text-align: center;
+        }
+
+        .feature-description {
+            width: 480px;
+            font-weight: 400; /* SF_Pro-Regular */
+            color: var(--text-gray);
+            font-size: 18.1px;
+            text-align: center;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem; /* gap-8 */
+            margin-top: 3rem; /* mt-12 */
+            max-width: 1200px;
+        }
+        
+        .feature-card {
+            width: 229px;
+            height: 233px;
+            background-color: var(--white);
+            border-radius: 15px;
+            box-shadow: 0px 4px 9.3px rgba(0,0,0,0.13); 
+            border: 0;
+        }
+        
+        .feature-card-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 40px; /* pt-10 */
+            padding-left: 24px; /* px-6 */
+            padding-right: 24px;
+            height: 100%;
+        }
+
+        .feature-card-content img {
+            width: 24px;
+            height: 18px;
+            margin-bottom: 16px; /* mb-4 */
+        }
+
+        .feature-card-title {
+            width: 130px;
+            font-size: 14.1px;
+            text-align: center;
+            white-space: nowrap;
+            margin-bottom: 16px; /* mb-4 */
+            font-weight: 500; /* SF_Pro-Medium */
+            
+            /* Gradient Text Styling */
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-fill-color: transparent;
+        }
+        
+        .feature-card-description {
+            width: 146px;
+            font-weight: 300; /* SF_Pro-Light */
+            font-size: 14.1px;
+            text-align: center;
+        }
+
+        /* --- Footer Styles --- */
+        .footer-section {
+            width: 100%;
+            /* Removed fixed height to allow content to define height */
+            background-image: var(--footer-bg-url);
+            background-size: cover;
+            background-position: center;
+            margin-top: auto;
+            position: relative;
+        }
+
+        .footer-content-wrapper {
+            /* REMOVED: max-width: 1015px; */
+            /* REMOVED: margin: 0 auto; (This caused centering) */
+            padding: 56px 64px; /* pt-14 px-16 */
+            /* Ensures content respects left padding */
+            width: auto; 
+        }
+
+        .footer-logo-tagline {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem; /* gap-3 */
+            margin-bottom: 64px; /* mb-16 */
+        }
+
+        .footer-logo-box {
+            width: 104px;
+            height: 35px;
+            border-radius: 10px;
+            background: var(--logo-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-logo-text {
+            font-weight: 800;
+            color: var(--white);
+            font-size: 25.8px;
+            white-space: nowrap;
+        }
+
+        .footer-tagline-text {
+            font-weight: 300;
+            color: #000;
+            font-size: 26.6px;
+        }
+
+        .footer-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem; /* gap-2 */
+            margin-bottom: 48px; /* mb-12 */
+        }
+
+        .footer-nav a {
+            text-decoration: none;
+            /* Gradient Text Styling (Using the correct vibrant gradient) */
+            background-image: var(--link-text-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-fill-color: transparent;
+            
+            font-weight: bold; 
+            font-size: 28px;
+            letter-spacing: -0.84px;
+            transition: opacity 0.3s;
+            /* Ensures text is on one line and takes full text width */
+            width: auto; 
+            white-space: nowrap; 
+            height: 38px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-nav a:hover {
+            opacity: 0.8;
+        }
+
+        .footer-social-icons img {
+            width: 149px;
+            height: 17px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- === Header / Navigation Bar === -->
+    <header class="header">
+        <div class="header-nav-container">
+            <div class="logo-group">
+                <div id="header-logo-tagline" class="logo-tagline animated-element" data-delay="0">
+                    <div class="logo-box">
+                        <span class="logo-text">Guuds</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-avatar-group animated-element" data-delay="200">
+                <nav id="header-nav" class="header-links">
+                    <a href="Home.html" class="nav-link active-link">Home</a>
+                    <a href="Market_Place.html" class="nav-link">Marketplace</a>
+                    <a href="Search.html" class="nav-link">Search</a>
+                    <a href="Communities.html" class="nav-link">Communities</a>
+                    <a href="Team.html" class="nav-link">Team</a>
+                </nav>
+                
+                <div id="header-avatar" class="header-avatar animated-element" data-delay="400">
+                    <img
+                        alt="Generic avatar"
+                        src="https://c.animaapp.com/mi1npewox6dlCb/img/generic-avatar.svg"
+                    />
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- === Main Content === -->
+    <main>
+        <section class="hero-section">
+            <div class="hero-background-img"></div>
+            <div class="hero-content">
+                <h1 id="hero-title" class="hero-title animated-element" data-delay="300">
+                    K-pop Community Marketplace
+                </h1>
+                
+                <p id="hero-description" class="hero-description animated-element" data-delay="400">
+                    Buy, sell, and trade authentic K-pop merchandices within your
+                    favorite fan communities.
+                    <br />
+                    Connect with ARMYs, BLINKs, UAENAs, >ONCEs and more!
+                </p>
+
+                <a href="Market_Place.html" id="hero-button" class="hero-button animated-element" data-delay="500">
+                    <span>Start Shopping</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right">
+                        <path d="m9 18 6-6-6-6"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- === Marketplace Section (Your community) === -->
+        <section class="section-padding">
+            <h2 id="marketplace-title" class="section-title animated-element" data-delay="200">
+                Your community
+            </h2>
+
+            <!-- Cards rendered by JS for MarketplaceSection -->
+            <div class="scroll-area">
+                <div id="marketplace-scroll-container" class="scroll-container">
+                    <!-- Cards will be inserted here by JavaScript -->
+                </div>
+            </div>
+
+            <div class="section-button-container">
+                <a href="Communities.html" id="marketplace-btn" class="section-button animated-element" data-delay="400" 
+                    >
+                    <span>View more communities</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right">
+                        <path d="m9 18 6-6-6-6"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- === Community Section (Marketplace items) === -->
+        <section class="section-padding">
+            <h2 id="community-title" class="section-title animated-element" data-delay="200">
+                Marketplace
+            </h2>
+
+            <!-- Cards rendered by JS for CommunitySection -->
+            <div class="scroll-area">
+                <div id="community-scroll-container" class="scroll-container">
+                    <!-- Cards will be inserted here by JavaScript -->
+                </div>
+            </div>
+
+            <div class="section-button-container">
+                <a href="Market_Place.html" id="community-btn" class="section-button animated-element" data-delay="400"
+                    >
+                    <span>View more</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right">
+                        <path d="m9 18 d6-6-6-6"/>
+                    </svg>
+                </a>
+            </div>
+        </section>
+        <section class="why-choose-section">
+            <div class="feature-grid-container">
+                <h2 class="feature-subtitle animated-element" data-delay="200">
+                    Why Choose Guuds?
+                </h2>
+                
+                <p class="feature-description animated-element" data-delay="300">
+                    We provide a safe, community-focused platform K-pop fans to buy and
+                    sell authentic merchandise
+                </p>
+
+                <div id="feature-grid" class="feature-grid">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="footer-section" class="footer-section">
+        <div class="footer-content-wrapper">
+            <div id="footer-logo-tagline" class="footer-logo-tagline animated-element" data-delay="0">
+                <div class="footer-logo-box">
+                    <span class="footer-logo-text">Guuds</span>
+                </div>
+                <span class="footer-tagline-text">
+                    K-pop Community Market
+                </span>
+            </div>
+
+            <nav id="footer-nav" class="footer-nav animated-element" data-delay="200">
+                <a href="About.html" class="footer-link">About</a>
+            </nav>
+
+            <div id="footer-social-icons" class="footer-social-icons animated-element" data-delay="400">
+            </div>
+        </div>
+    </footer>
+
+    <!-- === JavaScript === -->
+    <script>
+        const scrollItems = [
+            { id: 1, image: "https://c.animaapp.com/mhrcnimxAJQP9m/img/image-5.svg", text: "Album Card Set", price: "$45" },
+            { id: 2, image: "https://c.animaapp.com/mhrcnimxAJQP9m/img/image-5.svg", text: "Official Lightstick", price: "$60" },
+            { id: 3, image: "https://c.animaapp.com/mhrcnimxAJQP9m/img/image-5.svg", text: "Concert Poster", price: "$15" },
+            { id: 4, image: "https://c.animaapp.com/mhrcnimxAJQP9m/img/image-5.svg", text: "Photocard Bundle", price: "$25" },
+            { id: 5, image: "https://c.animaapp.com/mhrcnimxAJQP9m/img/image-5.svg", text: "Fanmade Keychain", price: "$10" },
+            { id: 6, image: "https://c.animaapp.com/mhrcnimxAJQP9m/img/image-5.svg", text: "Signed Mini Album", price: "$120" },
+            { id: 7, image: "https://c.animaapp.com/mhrcnimxAJQP9m/img/image-5.svg", text: "Group Hoodie", price: "$85" },
+            { id: 8, image: "https://c.animaapp.com/mhrcnimxAJQP9m/img/image-5.svg", text: "Limited Edition Vinyl", price: "$75" },
+            { id: 9, image: "https://c.animaapp.com/mhrcnimxAJQP9m/img/image-5.svg", text: "T-Shirt", price: "$30" },
+            { id: 10, image: "https://c.animaapp.com/mhrcnimxAJQP9m/img/image-5.svg", text: "Phone Grip", price: "$12" },
+            { id: 11, image: "https://c.animaapp.com/mhrcnimxAJQP9m/img/image-5.svg", text: "Poster Tube", price: "$18" },
+            { id: 12, image: "https://c.animaapp.com/mhrcnimxAJQP9m/img/image-5.svg", text: "Mini Photobook", price: "$28" },
+        ];
+        
+        const featureCards = [
+            { icon: "https://c.animaapp.com/mhrcnimxAJQP9m/img/group-3.png", title: "Community-Driven", gradient: "linear-gradient(90deg,rgba(190,93,239,1)_31%,rgba(239,93,168,1)_100%)", description: "connect with fellow K-pop fans and trade within your favorite communitise" },
+            { icon: "https://c.animaapp.com/mhrcnimxAJQP9m/img/group-4.png", title: "Verfified Sellers", gradient: "linear-gradient(90deg,rgba(239,93,168,1)_15%,rgba(190,93,239,1)_100%)", description: "official stores and verified sellers for authentic merchandise" },
+            { icon: "https://c.animaapp.com/mhrcnimxAJQP9m/img/vector-2.svg", title: "Community Safety", gradient: "linear-gradient(90deg,rgba(132,95,244,1)_23%,rgba(239,93,168,1)_100%)", description: "Community ratings and reviews to ensure safe transactions" },
+            { icon: "https://c.animaapp.com/mhrcnimxAJQP9m/img/vector-4.svg", title: "Market Insights", gradient: "linear-gradient(90deg,rgba(239,93,168,1)_27%,rgba(132,95,244,1)_100%)", description: "Track trends and prices assor different K-pop communities" },
+        ];
+
+        const communityData = [
+            { id: 1, name: "STAYs", members: "20.5k members", description: "Connect with fellow STAY and find rare STRAYKIDS collectibles", isJoined: false, imageUrl: "https://c.animaapp.com/mhrcnimxAJQP9m/img/image.svg" },
+            { id: 2, name: "ARMYs", members: "12.3k members", description: "ARMY community for BTS merchandise and exclusive items", isJoined: true, imageUrl: "https://c.animaapp.com/mhrcnimxAJQP9m/img/image.svg" },
+            { id: 3, name: "UAENAs", members: "13.8k members", description: "Official IU fan community for buying, selling, and trading authentic merchandise", isJoined: true, imageUrl: "https://c.animaapp.com/mhrcnimxAJQP9m/img/image.svg" },
+            { id: 4, name: "LUVIEs", members: "12.3k members", description: "Join Luvie community to trade and discover MD/GOODS together!", isJoined: false, imageUrl: "https://c.animaapp.com/mhrcnimxAJQP9m/img/image.svg" },
+            { id: 5, name: "ONCEs", members: "18k members", description: "The hub for fans to connect and trade collectibles", isJoined: true, imageUrl: "https://c.animaapp.com/mhrcnimxAJQP9m/img/image.svg" },
+            { id: 6, name: "EXO-Ls", members: "30.2k members", description: "Find, collect, and exchange spacial items with fellow fans at EXO-L community", isJoined: false, imageUrl: "https://c.animaapp.com/mhrcnimxAJQP9m/img/image.svg" },
+            { id: 7, name: "BLINKS", members: "45.1k members", description: "The official Blackpink fan hub for merchandise exchange.", isJoined: true, imageUrl: "https://c.animaapp.com/mhrcnimxAJQP9m/img/image.svg" },
+            { id: 8, name: "MOAs", members: "9.5k members", description: "TXT fan community for trading photocards and albums.", isJoined: false, imageUrl: "https://c.animaapp.com/mhrcnimxAJQP9m/img/image.svg" },
+            { id: 9, name: "Carats", members: "22k members", description: "Seventeen fan community - trade rare goods and collectibles.", isJoined: true, imageUrl: "https://c.animaapp.com/mhrcnimxAJQP9m/img/image.svg" },
+        ];
+
+        const renderScrollCards = (containerId, data, startDelay) => {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            
+            container.innerHTML = '';
+
+            data.forEach((item, index) => {
+                const delayMs = startDelay + (index * 100);
+
+                const cardHtml = `
+                    <div 
+                        class="card-wrapper animated-element" 
+                        data-delay="${delayMs}" 
+                        id="scroll-card-${item.id}"
+                    >
+                        <div class="card-content">
+                            <div class="card-image" style="background-image: url('${item.image}')"></div>
+                            <div class="card-details">
+                                <p class="text">${item.text}</p>
+                                <p class="price">${item.price}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', cardHtml);
+            });
+        };
+        
+        const renderFeatureCards = (containerId, data, startDelay) => {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            
+            container.innerHTML = '';
+
+            data.forEach((card, index) => {
+                const delayMs = startDelay + (index * 100);
+
+                const cardHtml = `
+                    <div 
+                        class="feature-card animated-element" 
+                        data-delay="${delayMs}"
+                    >
+                        <div class="feature-card-content">
+                            <img alt="${card.title}" src="${card.icon}" />
+
+                            <h3 
+                                class="feature-card-title"
+                                style="background: ${card.gradient}; -webkit-background-clip: text; background-clip: text;"
+                            >
+                                ${card.title}
+                            </h3>
+
+                            <p class="feature-card-description">
+                                ${card.description}
+                            </p>
+                        </div>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', cardHtml);
+            });
+        };
+        
+        const renderMarketplaceCards = (containerId, data, startDelay) => {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            
+            container.innerHTML = '';
+
+            data.forEach((community, index) => {
+                const delayMs = startDelay + (index * 100);
+                const isJoined = community.isJoined;
+
+                const cardHtml = `
+                    <div 
+                        class="marketplace-card-wrapper animated-element" 
+                        data-delay="${delayMs}"
+                    >
+                        <div class="marketplace-card-content">
+                            <div class="marketplace-card-image" style="background-image: url('${community.imageUrl}')">
+                                ${isJoined ? `<span class="marketplace-card-badge">Joined</span>` : ''}
+                                <h3 class="marketplace-card-title">${community.name}</h3>
+                            </div>
+                            <div class="marketplace-card-body">
+                                <p class="marketplace-card-description">${community.description}</p>
+                                <p class="marketplace-card-members">${community.members}</p>
+                                <div class="marketplace-card-actions">
+                                    <button class="leave-btn">${isJoined ? 'Leave' : 'Join'}</button>
+                                    <button class="join-btn">View</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', cardHtml);
+            });
+        };
+
+
+        // --- Initialization and Animation Application ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Render all dynamic content
+            // 1. Marketplace Section ("Your community"): Use full communityData (10 items)
+            renderMarketplaceCards('marketplace-scroll-container', communityData, 400); 
+
+            // 2. Community Section ("Marketplace"): Use extended scrollItems (12 items)
+            renderScrollCards('community-scroll-container', scrollItems, 400); 
+            
+            // 3. Features Section
+            renderFeatureCards('feature-grid', featureCards, 400); 
+            
+            // Set 'Home' as active link style
+            const homeLink = document.querySelector('.header-links .nav-link:nth-child(1)');
+            if (homeLink) {
+                homeLink.classList.add('active-link');
+            }
+
+            // Apply animation logic to ALL animated elements
+            const animatedElements = document.querySelectorAll('.animated-element');
+
+            animatedElements.forEach(el => {
+                const delay = parseInt(el.getAttribute('data-delay') || '0', 10);
+                
+                // Apply CSS animation with calculated delay
+                el.classList.add('animate-start');
+                el.style.animationDelay = `${delay}ms`;
+            });
+        });
+    </script>
+</body>
+</html>

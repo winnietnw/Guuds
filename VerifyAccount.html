@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Verify Account</title>
+    <link rel="stylesheet" href="VerifyAccount.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- TOP NAVBAR -->
+    <header class="navbar">
+        <div class="nav-inner">
+
+            <div class="logo">
+                <span class="logo-pill">Guuds</span>
+                <span class="gradient-text">K-pop Community Market</span>
+            </div>
+
+            <nav class="nav-links">
+                <a href="Home.html">Home</a>
+                <a href="Marketplace.html">Marketplace</a>
+                <a href="Search.html">Search</a>
+                <a href="Community.html">Communities</a>
+                <a href="About.html">Team</a>
+            </nav>
+
+            
+
+        </div>
+        </div>
+    </header>
+
+
+
+    <!-- PAGE CONTENT -->
+    <div class="page">
+
+        <div class="verify-card">
+
+            <span class="brand-pill">Guuds</span>
+
+            <h2 class="title">Welcome to Guuds</h2>
+
+            <div class="verify-row">
+                <div class="verify-icon"></div>
+                <span class="verify-pill">Verify Account</span>
+            </div>
+
+            <!-- FORM -->
+            <form class="verify-form">
+
+                <label>Store Name</label>
+                <input type="text">
+
+                <label>Contact Address</label>
+                <input type="text">
+
+                <label>Mobile Number</label>
+                <input type="text">
+
+                <label>Confirm password</label>
+                <input type="password">
+
+                <label>National ID</label>
+                <input type="text">
+
+                <label>Bank Account detail</label>
+                <input type="text">
+
+                <button class="create-btn" type="submit">Create Store</button>
+            </form>
+
+        </div>
+
+    </div>
+    <!-- POPUP SUCCESS -->
+    <div id="store-popup" class="popup-overlay">
+        <div class="popup-box">
+            <h3>🎉 Store Created!</h3>
+            <p>Your store has been successfully verified.</p>
+            <button onclick="closePopup()">OK</button>
+        </div>
+    </div>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="logo">
+                <span class="logo-pill">Guuds</span>
+                <span class="logo-text">K-pop Community Market</span>
+            </div>
+
+            <ul class="footer-links">
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="VerifyAccount.js"></script>
+</body>
+
+</html>

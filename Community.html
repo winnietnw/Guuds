@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Community – Guuds</title>
+  <link rel="stylesheet" href="community.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- TOP NAVBAR -->
+  <header class="navbar">
+    <div class="nav-inner">
+      <div class="logo">
+        <span class="logo-pill">Guuds</span>
+        <span class="gradient-text">K-pop Community Market</span>
+
+      </div>
+
+      <nav class="nav-links">
+            <a href="Home.html">Home</a>
+            <a href="Marketplace.html">Marketplace</a>
+            <a href="Search.html">Search</a>
+            <a href="Community.html">Communities</a>
+            <a href="About.html">Team</a>
+        </nav>
+
+      <div class="circle">
+        <i class="material-icons" onclick="window.location.href='UserProfile-Unverify.html'">person</i>
+      </div>
+  </header>
+
+  <main class="page">
+    <!-- Heading -->
+    <section class="header-section">
+      <h1>Community</h1>
+      <p class="sub">Join communities and start trading with fellow fans</p>
+    </section>
+
+
+    <section class="community-scroll">
+
+      <!-- ARMYS -->
+      <div class="community-card">
+        <div class="badge-joined">Joined</div>
+
+        <div class="thumb">
+          <div class="img-placeholder"></div>
+        </div>
+
+        <div class="body">
+          <h3>ARMYs</h3>
+          <p>ARMY community for BTS merchandise and exclusive items</p>
+
+          <div class="bottom">
+            <span class="members">12.3k members</span>
+
+            <div class="actions">
+              <button class="btn-outline">Leave</button>
+              <button onclick="location.href='Community2.html'" class="btn-black">View</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+    <!-- FOR YOU -->
+    <h2 class="for-you-title">For you</h2>
+
+    <section class="for-you-section">
+      <div class="posts" id="posts"></div>
+
+      <!-- sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-box">
+          <h4>My Communities</h4>
+          <ul id="my-comm-list"></ul>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <!-- Floating compose button -->
+  <button class="compose-btn" href="">📝</button>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="logo">
+        <span class="logo-pill">Guuds</span>
+        <span class="logo-text">K-pop Community Market</span>
+      </div>
+
+      <ul class="footer-links">
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="community.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guuds Product</title>
+    <link rel="stylesheet" href="01Product.css">
+</head>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<header class="navbar">
+    <div class="nav-inner">
+        <div class="logo">
+            <span class="logo-pill">Guuds</span>
+            <span class="gradient-text">K-pop Community Market</span>
+
+        </div>
+
+        <nav class="nav-links">
+            <a href="Home.html">Home</a>
+            <a href="Marketplace.html">Marketplace</a>
+            <a href="Search.html">Search</a>
+            <a href="Community.html">Communities</a>
+            <a href="About.html">Team</a>
+        </nav>
+
+        <div class="circle">
+            <i class="material-icons">person</i>
+        </div>
+</header>
+
+<body>
+    <div class="Product">
+        <h1>Product Details</h1>
+        <div class="pd-header">
+            <span class="pd-name">Product name </span>
+            <span class="pd-Artist">Artist </span>
+            <span class="pd-types">Types </span>
+        </div>
+        <div class="pd-body">
+            <div class="main-image">
+                <img class="pd-image" src=".png" alt="Product Image1">
+            </div>
+            <div class="thumbnail-list">
+                <div class="thumbnail">
+                    <img src="" alt="" onclick="window.location.href='01Product2.html'">
+                </div>
+                <div class="thumbnail">
+                    <img src="" alt="" onclick="window.location.href='01Product3.html'">
+                </div>
+                <div class="thumbnail">
+                    <img src="" alt="" onclick="window.location.href='01Product4.html'">
+                </div>
+            </div>
+            <input type="file" id="imageInput" accept="image/*" multiple hidden>
+            <div class="review-section">
+                <div class="review-box">
+                    Review: <span class="review-count"> </span>
+                    |
+                    Rating: <span class="rating-count"> </span>
+                </div>
+            </div>
+        
+            <div class="pd-info">
+                <span class="pd-description">Detail </span>
+                <br>
+                <span class="pd-price">XX Baht </span>
+            </div>
+            <div class="quantity-box">
+                <button id="qtyMinus" class="qty-btn">-</button>
+                <span id="qtyNumber" class="qty-number">1</span>
+                <button id="qtyPlus" class="qty-btn">+</button>
+            </div>
+            </div>
+            <div class="payment-actions">
+                <button id="cancel" class="btn-cart" type="button" onclick="window.location.href='cart.html'">Add To Cart</button>
+                <button id="confirm" class="btn-confirm " type="button"
+                    onclick="window.location.href='02Payment.html'">Buy Now</button>
+            </div>
+    </div>
+</body>
+
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="logo">
+            <span class="logo-pill">Guuds</span>
+            <span class="logo-text">K-pop Community Market</span>
+        </div>
+
+        <ul class="footer-links">
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </div>
+</footer>
+<script src="01Product.js"></script>
+</html>

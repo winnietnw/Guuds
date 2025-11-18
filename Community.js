@@ -5,7 +5,9 @@ const posts = [
     time: "2 hours ago",
     label: "Looking for",
     title: "Looking for BTS Jungkook Seven Photocard",
-    price: 20
+    price: 20,
+    likes: 15,
+    comments: 7
   },
   {
     user: "UAENA516",
@@ -13,7 +15,9 @@ const posts = [
     time: "6 hours ago",
     label: "Want to sell",
     title: "Selling IU 5th Album LILAC (Sealed)",
-    price: 20
+    price: 20,
+    likes: 10,
+    comments: 5
   },
   {
     user: "OnceForever",
@@ -21,22 +25,20 @@ const posts = [
     time: "6 hours ago",
     label: "",
     title: "Selling TWICE Fanmade Poster",
-    price: 3.5
+    price: 3.5,
+    likes: 3,
+    comments: 1
   }
-];
-
-const myComms = [
-  {name:"ARMYs", members:"20.5k"},
-  {name:"ONCEs", members:"19k"},
-  {name:"UAENAs", members:"13.8k"},
-  {name:"BLINKs", members:"26.2k"},
 ];
 
 function renderPosts() {
   const container = document.getElementById("posts");
-  posts.forEach(p => {
+  container.innerHTML = "";
+
+  posts.forEach((p, index) => {
     const card = document.createElement("div");
     card.className = "post";
+
     card.innerHTML = `
       <div class="post-header">
         <div>
@@ -58,46 +60,39 @@ function renderPosts() {
 
       <div class="post-footer">
         <span style="color:#6d00b5; font-weight:700">$${p.price}</span>
-        <span>♡ 15</span>
-        <span>↩ 7</span>
+
+        <span class="like-btn" data-index="${index}">
+          ❤️ <span class="like-count">${p.likes}</span>
+        </span>
+
+        <span>💬 ${p.comments}</span>
       </div>
     `;
+
     container.appendChild(card);
   });
 }
 
-function renderSidebar() {
-  const list = document.getElementById("my-comm-list");
-  myComms.forEach(c => {
-    const li = document.createElement("li");
-    li.innerHTML = `
-      <strong>${c.name}</strong>
-      <div style="color:#6b7280; font-size:14px">${c.members} members</div>
-    `;
-    list.appendChild(li);
-  });
-}
 
-document.addEventListener("DOMContentLoaded", () => {
-  renderPosts();
-  renderSidebar();
-});
 
-document.addEventListener("click", function(e) {
-  if (e.target.closest(".like-btn")) {
-    const btn = e.target.closest(".like-btn");
-    const countEl = btn.querySelector(".like-count");
-    let count = parseInt(countEl.textContent);
+document.addEventListener("click", function (e) {
+  const btn = e.target.closest(".like-btn");
+  if (!btn) return;
 
-    if (btn.dataset.liked === "false") {
-      countEl.textContent = count + 1;
-      btn.dataset.liked = "true";
-      btn.style.color = "#ff2d75"; // สีชมพูไลก์
-    } else {
-      countEl.textContent = count - 1;
-      btn.dataset.liked = "false";
-      btn.style.color = "#000"; // กลับสีปกติ
-    }
+  const i = btn.dataset.index;
+  const countEl = btn.querySelector(".like-count");
+
+  if (!posts[i].liked) {
+    posts[i].liked = true;
+    posts[i].likes++;
+    btn.style.color = "#ff2d75";
+  } else {
+    posts[i].liked = false;
+    posts[i].likes--;
+    btn.style.color = "black";
   }
+
+  countEl.textContent = posts[i].likes;
 });
 
+document.addEventListener("DOMContentLoaded", renderPosts);

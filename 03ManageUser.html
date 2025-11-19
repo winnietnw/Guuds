@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guuds Product</title>
+    <link rel="stylesheet" href="03ManageUser.css">
+</head>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<header class="navbar">
+    <div class="nav-inner">
+        <div class="logo">
+            <span class="logo-pill">Guuds</span>
+            <span class="gradient-text">K-pop Community Market</span>
+
+        </div>
+
+        <nav class="nav-links">
+            <a href="Home.html">Home</a>
+            <a href="Marketplace.html">Marketplace</a>
+            <a href="Search.html">Search</a>
+            <a href="Community.html">Communities</a>
+            <a href="About.html">Team</a>
+        </nav>
+
+        <div class="circle">
+            <i class="material-icons">person</i>
+        </div>
+</header>
+
+<body>
+    <div class="manage-user">
+        <div class="title">
+            <h1>User management</h1>
+        </div>
+        <div class="state">
+            <div class="label">Total User</div>
+            <div class="value" id="stat-total">0</div>
+        </div>
+        <div class="state">
+            <div class="label">Active User</div>
+            <div class="value" id="stat-total">0</div>
+        </div>
+
+        <div class="state">
+            <div class="label">Official Stores</div>
+            <div class="value" id="stat-official">0</div>
+        </div>
+        <div class="state">
+            <div class="label">Publisher Stores</div>
+            <div class="value" id="stat-publisher">0</div>
+        </div>
+    </div>
+
+    <div class="button-add">
+        <button class="toggle-btn active" onclick="showmodal()"> + Add User</button>
+
+        <div id="mymodal" class="modal-content">
+            <from class="from-add">
+                <div class="wrapper">
+                    <h2>Add User</h2>
+                    <div class="box b">
+                        <label>Username</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="box c">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="xxxx@xxx.xxx" required>
+                    </div>
+                    <div class="box b">
+                        <label>User Type</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="box c">
+                        <label>Account Status</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="box a">
+                        <label>Communitiese</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="payment-actions">
+                        <button id="confirm" class="btn-confirm "
+                            onclick="window.location.href='02Payment-Success.html'">Confirm</button>
+                        <button id="cancel" class="btn-cancel" onclick="Deletemodal()">Cancel</button>
+                    </div>
+
+                </div>
+
+            </from>
+        </div>
+    </div>
+    <div class="Manage-user-details">
+        <div class="user-search">
+            <input id="searchinput" type="text" class="search-input" placeholder="Search users">
+            <button class="search-btn">Search</button>
+        </div>
+        <div class="user-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Communities</th>
+                        <th>Register Date</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Address</th>
+                        <th style="text-align:center">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="userTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="logo">
+            <span class="logo-pill">Guuds</span>
+            <span class="logo-text">K-pop Community Market</span>
+        </div>
+
+        <ul class="footer-links">
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </div>
+
+</footer>
+<script src="UserDB.js"></script>
+<script src="03ManageUser.js"></script>
+
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product | Guuds K-pop</title>
+
+    <link rel="stylesheet" href="Add_Product.css">
+</head>
+
+<body>
+    <header class="header animate-fade-in">
+        <div class="header-content-wrapper">
+
+            <div class="logo-group">
+                <div class="logo-tagline">
+                    <div class="logo-box">
+                        <span class="logo-text">Guuds</span>
+                    </div>
+                    <span class="header-tagline-text">K-pop Community Market</span>
+                </div>
+            </div>
+
+            <nav class="header-nav">
+                <a href="Home.html" class="nav-link">Home</a>
+                <a href="Market_for_Publisher.html" class="nav-link active-bg">Marketplace</a>
+                <a href="Search.html" class="nav-link">Search</a>
+                <a href="Communities.html" class="nav-link">Communities</a>
+                <a href="About.html" class="nav-link">Team</a>
+            </nav>
+
+            <img class="header-avatar" src="https://c.animaapp.com/mi4pifrgODyN4Y/img/generic-avatar.svg" alt="avatar">
+        </div>
+    </header>
+
+    <!-- ================= MAIN ================= -->
+    <main class="animate-fade-in" style="--animation-delay:200ms">
+
+        <div class="main-header">
+            <h1 class="main-title">Add Product</h1>
+
+            <a href="Market_for_Publisher.html" class="return-link">← Return To Marketplace</a>
+        </div>
+
+        <form id="addProductForm">
+
+            <div class="form-grid">
+
+                <div class="form-group">
+                    <label class="form-label">Product Name</label>
+                    <input type="text" class="input-base input-text-style">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Artist</label>
+                    <input type="text" class="input-base input-text-style">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Stock Quantity</label>
+                    <input type="number" class="input-base input-stock">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Category</label>
+                    <select class="input-base select-base">
+                        <option>Select Category</option>
+                        <option>Albums</option>
+                        <option>Lightstick</option>
+                        <option>Photocard</option>
+                        <option>Poster</option>
+                        <option>Accessories</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Price (THB)</label>
+                    <input type="number" class="input-base input-text-style">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Status</label>
+                    <select class="input-base select-base">
+                        <option>Available</option>
+                        <option>Sold</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-span-2">
+                    <label class="form-label">Description</label>
+                    <textarea class="input-base textarea-style"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Seller Type</label>
+                    <select class="input-base select-base">
+                        <option>Individual</option>
+                        <option>Business</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="photo-upload-section">
+                <label class="form-label">Add Photo</label>
+
+                <div class="photo-placeholder-container">
+
+                    <a href="Product-Details-3.html" class="photo-placeholder-link">
+                        <div class="photo-placeholder-box"></div>
+                    </a>
+
+                    <a href="Product-Details-4-.html" class="photo-placeholder-link">
+                        <div class="photo-placeholder-box"></div>
+                    </a>
+
+                    <a href="Product-Details-5.html" class="photo-placeholder-link">
+                        <div class="more-pic-icon">+</div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="action-buttons-group">
+                <button type="button" class="btn-base btn-cancel">Cancel</button>
+                <button type="submit" class="btn-base btn-save">Save</button>
+            </div>
+        </form>
+    </main>
+
+    <!-- SUCCESS MODAL -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <h3 class="modal-title">Add Product Successful! 🥳</h3>
+            <p>Your new product has been added.</p>
+            <button id="closeModal" class="modal-button">Close</button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer animate-fade-in" style="--animation-delay:400ms">
+
+        <div class="footer-logo-tagline-group">
+            <div class="logo-box"><span class="logo-text">Guuds</span></div>
+            <span class="footer-tagline-text">K-pop Community Market</span>
+        </div>
+
+        <nav class="footer-nav">
+            <a href="About.html">About</a>
+        </nav>
+
+    </footer>
+
+    <!-- JS FILE -->
+    <script src="Add_Product.js"></script>
+</body>
+</html>

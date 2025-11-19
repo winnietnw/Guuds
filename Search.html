@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Search | Guuds K-pop</title>
+<<<<<<< HEAD
     <style>
         /* === 1. CSS Variables and Base Styles (Guuds Theme) === */
         :root {
@@ -338,7 +339,11 @@
             height: 17px;
         }
     </style>
+=======
+    <link rel="stylesheet" href="Search.css" />
+>>>>>>> 06ba5535ad5ff2f560b2f160808ded91aa9a6e3c
 </head>
+
 <body>
 
     <header class="header">
@@ -348,18 +353,15 @@
                     <div class="logo-box">
                         <span class="logo-text">Guuds</span>
                     </div>
-                    <span class="tagline-text">
-                        K-pop Community Market
-                    </span>
+                    <span class="tagline-text">K-pop Community Market</span>
                 </div>
             </div>
 
             <div class="nav-avatar-group animated-element" style="--animation-delay:200ms">
-                <nav id="header-nav" class="header-links">
-                    </nav>
-                
+                <nav id="header-nav" class="header-links"></nav>
+
                 <div class="header-avatar">
-                    <img
+                    <img 
                         alt="User avatar"
                         src="https://c.animaapp.com/mi1npewox6dlCb/img/generic-avatar.svg"
                     />
@@ -378,20 +380,15 @@
                 <input type="text" placeholder="Search" class="search-input" />
                 <button class="search-icon-btn">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon-svg">
-                        <circle cx="11" cy="11" r="8"/>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
                 </button>
             </div>
-            
+
             <div class="action-group animated-element" style="--animation-delay:500ms">
-                <a href="Advance_Search.html" class="advance-search-link">
-                    Advance Search
-                </a>
-                
-                <button class="search-btn">
-                    Search
-                </button>
+                <a href="Advance_Search.html" class="advance-search-link">Advance Search</a>
+                <button class="search-btn">Search</button>
             </div>
         </div>
     </main>
@@ -402,9 +399,7 @@
                 <div class="footer-logo-box">
                     <span class="footer-logo-text">Guuds</span>
                 </div>
-                <span class="footer-tagline-text">
-                    K-pop Community Market
-                </span>
+                <span class="footer-tagline-text">K-pop Community Market</span>
             </div>
 
             <nav class="footer-nav">
@@ -413,43 +408,10 @@
         </div>
     </footer>
 
-    <script>
-        const navLinks = [
-            { label: "Home", href: "Home.html", active: false },
-            { label: "Marketplace", href: "Market_Place.html", active: false },
-            { label: "Search", href: "Search.html", active: true },
-            { label: "Communities", href: "Community.html", active: false },
-            { label: "Team", href: "Team.html", active: false },
-        ];
-
-        const renderNavLinks = () => {
-            const container = document.getElementById('header-nav');
-            if (!container) return;
-            container.innerHTML = navLinks.map(link => `
-                <a 
-                    href="${link.href}" 
-                    class="nav-link ${link.active ? 'active-link' : ''}"
-                >
-                    ${link.label}
-                </a>
-            `).join('');
-        };
-        
-        // Custom function to animate elements based on data-delay
-        const initAnimations = () => {
-             const animatedElements = document.querySelectorAll('.animated-element');
-
-            animatedElements.forEach(el => {
-                const delay = parseInt(el.getAttribute('data-delay') || '0', 10);
-                el.classList.add('animate-start');
-                el.style.animationDelay = `${delay}ms`;
-            });
-        };
-
-        document.addEventListener('DOMContentLoaded', () => {
-            renderNavLinks();
-            initAnimations();
-        });
-    </script>
+<<<<<<< HEAD
+    
+=======
+    <script src="Search.js"></script>
+>>>>>>> 06ba5535ad5ff2f560b2f160808ded91aa9a6e3c
 </body>
 </html>

@@ -1,0 +1,254 @@
+/* ===== ROOT VARIABLES ===== */
+:root {
+    --pink: #ef5da8;
+    --purple: #845ff4;
+    --gradient: linear-gradient(90deg, var(--pink), var(--purple));
+    --gradient-rev: linear-gradient(90deg, var(--purple), var(--pink));
+    --border: #d9d9d9;
+}
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Helvetica", Arial, sans-serif;
+}
+
+body {
+    background: white;
+}
+
+/* ===== HEADER ===== */
+.header {
+    height: 120px;
+    padding: 0 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-box {
+    background: var(--gradient);
+    padding: 5px 18px;
+    border-radius: 10px;
+}
+
+.logo-text {
+    color: white;
+    font-weight: 800;
+    font-size: 24px;
+}
+
+.tagline {
+    font-size: 22px;
+    font-weight: 300;
+}
+
+.nav {
+    display: flex;
+    gap: 35px;
+}
+
+.nav a {
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+    padding: 5px 15px;
+    border-radius: 8px;
+}
+
+.nav a.active {
+    background: #e8e1ff;
+    color: #4f25ff;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background: #e2d8ff;
+    border-radius: 50%;
+}
+
+/* ===== MAIN ===== */
+.container {
+    padding: 40px 180px;
+}
+
+.page-title {
+    font-size: 50px;
+    font-weight: 700;
+    margin-bottom: 40px;
+
+    background: var(--gradient-rev);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: inline-block;
+}
+
+/* Form layout */
+.search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+/* Left labels */
+.form-label {
+    width: 230px;
+    height: 55px;
+    background: var(--gradient-rev);
+    border-radius: 12px;
+    color: white;
+    font-size: 22px;
+    font-weight: 600;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Inputs */
+.input {
+    flex: 1;
+    height: 55px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0 18px;
+    font-size: 17px;
+}
+
+/* Rating Buttons */
+.rating-group {
+    display: flex;
+    gap: 10px;
+}
+
+.rating-btn {
+    padding: 6px 14px;
+    border-radius: 10px;
+    background: white;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+/* Hover */
+.rating-btn:hover {
+    border-color: var(--purple);
+}
+
+/* Selected */
+.rating-btn.selected {
+    background: var(--gradient);     
+    color: rgb(121, 98, 255);
+    border-color: var(--purple);
+    transform: translateY(0);
+}
+
+/* Availability */
+.availability {
+    display: flex;
+    gap: 25px;
+    font-size: 16px;
+}
+
+/* Buttons */
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.btn-search {
+    width: 170px;
+    height: 48px;
+    border-radius: 10px;
+    font-size: 22px;
+    border: none;
+    background: var(--gradient-rev);
+    color: white;
+    cursor: pointer;
+}
+
+.btn-clear {
+    width: 150px;
+    height: 48px;
+    border-radius: 10px;
+    font-size: 22px;
+    border: 1px solid #bbb;
+    background: white;
+    cursor: pointer;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+    background: linear-gradient(120deg, #f8c8dd, #e8d7ff);
+    margin-top: 80px;
+    padding: 50px 60px;     /* ตรงตามดีไซน์ */
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* บรรทัดเดียว (Guuds + tagline) */
+.footer-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* โลโก้ Guuds */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 110px;
+    height: 40px;
+    background: var(--gradient);
+    border-radius: 12px;
+}
+
+.footer-logo span {
+    color: white;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+/* ข้อความ K-pop Community Market */
+.footer-tagline {
+    font-size: 26px;
+    font-weight: 300;
+    white-space: nowrap;
+}
+
+/* ลิงก์ About */
+.footer-link {
+    margin-top: 35px;
+    font-size: 26px;
+    font-weight: 700;
+    display: inline-block;
+
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}

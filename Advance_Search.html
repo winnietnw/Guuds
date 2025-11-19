@@ -1,673 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advance Search - Guuds</title>
-    <style>
-        /* === CSS Variables and Base Styles === */
-        :root {
-            /* General Theme Colors from JSX */
-            --vibrant-purple: #845ff4;   /* rgba(132,95,244,1) */
-            --vibrant-pink: #ef5da8;     /* rgba(239,93,168,1) */
-            --light-purple: #a5a6f6;     /* rgba(165,166,246,1) */
-            --link-blue: #3603d1;
-            --active-link-bg: #e4e4ff;        /* Active Link Color */
-            --input-border: #b3b3b3;
-            --white: #fff;
-            --input-height: 50px; /* Defined height for input/label boxes */
-            
-            /* Gradients */
-            --logo-gradient: linear-gradient(90deg, var(--vibrant-pink) 0%, var(--vibrant-purple) 100%);
-            --label-gradient: linear-gradient(90deg, var(--vibrant-purple) 0%, var(--vibrant-pink) 100%);
-            --title-gradient: linear-gradient(90deg, var(--vibrant-pink) 0%, var(--light-purple) 100%);
-            /* FIXED: Ensures the link gradient is the specific vibrant mix used for text */
-            --link-text-gradient: linear-gradient(92deg, rgba(132, 95, 244, 1) 12%, rgba(239, 93, 168, 1) 65%); 
-        }
-
-        html,body {
-            height: 100%;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Helvetica', Arial, sans-serif;
-        }
-
-        body {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            background-color: var(--white);
-            color: #000;
-        }
-        
-        /* --- Animation Keyframes (Simulating fade-in) --- */
-        @keyframes fade-in {
-            from {
-                opacity: 0;
-                transform: translateY(-1rem);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .animated-element {
-            opacity: 0;
-            transform: translateY(-1rem);
-        }
-
-        /* Utility to make elements appear after animation */
-        .animate-forwards {
-            animation-fill-mode: forwards;
-        }
-
-        /* --- Header Styles --- */
-        .header {
-            width: 100%;
-            height: 140px;
-            background-image: url('https://c.animaapp.com/mi1npewox6dlCb/img/rectangle-3467592.png');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px 44px; /* px-11 */
-            border-bottom: 1px solid #ccc;
-        }
-
-        .header .logo-tagline {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem; /* gap-3 */
-        }
-
-        .header .logo-box {
-            width: 104px;
-            height: 36px; /* h-9 */
-            border-radius: 10px;
-            background: var(--logo-gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .header .logo-text {
-            font-weight: 800; /* SF_Pro-Heavy */
-            color: var(--white);
-            font-size: 25.8px;
-            white-space: nowrap;
-        }
-
-        .header .tagline-text {
-            font-weight: 300; /* SF_Pro-Light */
-            color: #000;
-            font-size: 25.8px;
-            white-space: nowrap;
-        }
-
-        .header-nav {
-            display: flex;
-            align-items: center;
-            gap: 2rem; /* gap-8 */
-        }
-
-        .header-nav a {
-            text-decoration: none;
-            font-weight: 400; /* SF_Pro-Regular */
-            font-size: 20.6px;
-            color: #000;
-            transition: all 0.2s;
-            padding: 4px 12px;
-            border-radius: 10px;
-        }
-
-        .header-nav a:hover:not(.active) {
-            color: var(--link-blue);
-        }
-
-        .header-nav a.active {
-            color: var(--link-blue);
-            background-color: var(--active-link-bg);
-        }
-
-        .header-avatar img {
-            width: 40px;
-            height: 40px;
-        }
-
-        /* --- Main Content Layout --- */
-        main {
-            flex: 1;
-            flex-grow: 1;
-            padding: 48px 64px; /* px-16 py-12 */
-            width: 100%;
-        }
-        
-        .main-content-wrapper {
-            max-width: 1015px;
-            margin: 0 auto;
-        }
-
-        .main-title {
-            margin-bottom: 64px; /* mb-16 */
-            
-            /* Gradient Text Styling */
-            background-image: var(--title-gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-fill-color: transparent;
-            
-            font-weight: bold; /* SF_Pro-Bold */
-            font-size: 52px;
-            white-space: nowrap;
-        }
-
-        .form-fields-container {
-            display: flex;
-            flex-direction: column;
-            gap: 40px; /* space-y-10 */
-        }
-        
-        /* --- Form Field Structure (Split Label/Input) --- */
-        .form-field {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem; /* --- UPDATED: Added spacing between label and input --- */
-            position: relative;
-        }
-
-        .form-label {
-            width: 230px;
-            height: var(--input-height);
-            border-radius: 10px; /* Fully rounded corners on the label box */
-            background: var(--label-gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .form-label span {
-            font-weight: 600; /* SF_Pro-Semibold */
-            color: var(--white);
-            font-size: 24px;
-        }
-
-        .form-input-control {
-            flex-grow: 1;
-            height: var(--input-height);
-            background-color: var(--white);
-            
-            /* --- UPDATED: Added full border and full radius for standalone box look --- */
-            border-radius: 10px; 
-            border: 1px solid var(--input-border);
-            
-            padding: 0 15px;
-            position: relative;
-            display: flex;
-            align-items: center;
-        }
-
-        .form-input-control input,
-        .form-input-control select {
-            width: 100%;
-            height: 100%;
-            border: none;
-            outline: none;
-            padding: 0;
-            background: none;
-            font-size: 16px;
-        }
-
-        /* --- Rating Buttons --- */
-        .rating-buttons-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem; /* gap-4 */
-        }
-        
-        .rating-button {
-            width: 48px; /* w-12 */
-            height: 22px;
-            border-radius: 10px;
-            border: 1px solid #d9d9d9;
-            background-color: var(--white);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.2s;
-            position: relative;
-        }
-
-        .rating-button:hover {
-            border-color: var(--vibrant-purple);
-        }
-
-        .rating-button.selected {
-            background-color: var(--vibrant-purple);
-            border-color: var(--vibrant-purple);
-        }
-        
-        .rating-button.selected span {
-            color: var(--white) !important;
-        }
-
-        .rating-button img {
-            width: 13px;
-            height: 14px;
-            margin-right: 4px; /* ml-1 in JSX, but positioned as first element */
-        }
-
-        .rating-button span {
-            font-weight: 400; /* SF_Pro-Semibold */
-            font-size: 14px;
-            color: #000;
-        }
-
-        /* --- Checkbox Styling (Custom components translated) --- */
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem; /* Reduced gap inside the group (was 0.75rem) */
-        }
-
-        .checkbox-group input[type="checkbox"] {
-            appearance: none;
-            width: 18px;
-            height: 18px;
-            border: 1px solid #000;
-            border-radius: 2px;
-            background-color: var(--white);
-            cursor: pointer;
-            position: relative;
-            flex-shrink: 0;
-            margin-right: 0.75rem; /* ADDED: Explicit margin right for the checkbox element */
-        }
-        
-        .checkbox-group input[type="checkbox"]:checked {
-            background-color: #000;
-            border-color: #000;
-        }
-
-        .checkbox-group input[type="checkbox"]:checked::after {
-            content: '✔';
-            color: var(--white);
-            font-size: 14px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .checkbox-group label {
-            font-weight: 400; /* SF_Pro-Semibold */
-            font-size: 16px;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-        
-        /* --- Availability Input Control (Controls spacing between In Stock and Out Of Stock) --- */
-        .form-input-control.availability-controls {
-            padding: 0 48px; /* px-12 (48px) */
-            gap: 48px; /* gap-12 (48px) */
-        }
-
-
-        /* --- Action Buttons --- */
-        .action-buttons-container {
-            display: flex;
-            justify-content: flex-end;
-            gap: 1.5rem; /* gap-6 */
-            margin-top: 80px; /* mt-20 */
-        }
-
-        .search-btn, .clear-btn {
-            width: 183px;
-            height: 50px;
-            border-radius: 10px;
-            font-weight: 500; /* SF_Pro-Medium */
-            font-size: 24px;
-            cursor: pointer;
-            transition: opacity 0.2s;
-            border: none;
-        }
-
-        .search-btn {
-            background: var(--label-gradient);
-            color: var(--white);
-        }
-
-        .search-btn:hover {
-            opacity: 0.9;
-        }
-
-        .clear-btn {
-            background-color: var(--white);
-            border: 1px solid var(--input-border);
-            color: #000;
-        }
-
-        .clear-btn:hover {
-            background-color: #f0f0f0;
-        }
-
-        /* --- Footer Styles (Full Width Background, Centered Content) --- */
-        .footer-section {
-            width: 100%;
-            background-image: url('https://c.animaapp.com/mi1npewox6dlCb/img/rectangle-57.svg');
-            background-size: cover;
-            background-position: center;
-            margin-top: auto;
-            position: relative;
-        }
-
-        .footer-content-wrapper {
-            margin: 0 auto;
-            padding: 56px 64px;
-        }
-
-        .footer-logo-tagline {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem; /* gap-3 */
-            margin-bottom: 64px; /* mb-16 */
-        }
-
-        .footer-logo-box {
-            width: 104px;
-            height: 35px;
-            border-radius: 10px;
-            background: var(--logo-gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .footer-logo-text {
-            font-weight: 800;
-            color: var(--white);
-            font-size: 25.8px;
-            white-space: nowrap;
-        }
-
-        .footer-tagline-text {
-            font-weight: 300;
-            color: #000;
-            font-size: 26.6px;
-        }
-
-        .footer-nav {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem; /* gap-2 */
-            margin-bottom: 48px; /* mb-12 */
-        }
-
-        .footer-nav a {
-            text-decoration: none;
-            /* Gradient Text Styling (Using the correct vibrant gradient) */
-            background-image: var(--link-text-gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-fill-color: transparent;
-            
-            font-weight: bold; 
-            font-size: 28px;
-            letter-spacing: -0.84px;
-            transition: opacity 0.3s;
-            /* Ensures text is on one line and takes full text width */
-            width: auto; 
-            white-space: nowrap; 
-            height: 38px;
-            display: flex;
-            align-items: center;
-        }
-
-        .footer-nav a:hover {
-            opacity: 0.8;
-        }
-
-        .footer-social-icons img {
-            width: 149px;
-            height: 17px;
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advance Search</title>
+    <link rel="stylesheet" href="Advance_Search.css">
 </head>
+
 <body>
 
-    <!-- === Header / Navigation Bar === -->
+    <!-- ===== HEADER ===== -->
     <header class="header">
-        <div id="header-logo-tagline" class="logo-tagline animated-element animate-forwards" data-delay="0">
+        <div class="header-left">
             <div class="logo-box">
                 <span class="logo-text">Guuds</span>
             </div>
-            <span class="tagline-text">
-                K-pop Community Market
-            </span>
+            <span class="tagline">K-pop Community Market</span>
         </div>
 
-        <nav id="header-nav" class="header-nav animated-element animate-forwards" data-delay="200">
-            <a href="Home.html" class="nav-link">Home</a>
-            <a href="Market_Place.html" class="nav-link">Marketplace</a>
-            <a href="Search.html" class="nav-link active">Search</a>
-            <a href="Communities.html" class="nav-link">Communities</a>
-            <a href="Team.html" class="nav-link">Team</a>
+        <nav class="nav">
+            <a href="Home.html">Home</a>
+            <a href="Market_Place.html">Marketplace</a>
+            <a href="Search.html" class="active">Search</a>
+            <a href="Communities.html">Communities</a>
+            <a href="Team.html">Team</a>
         </nav>
 
-        <div id="header-avatar" class="header-avatar animated-element animate-forwards" data-delay="400">
-            <img
-                alt="Generic avatar"
-                src="https://c.animaapp.com/mi1npewox6dlCb/img/generic-avatar.svg"
-            />
-        </div>
+        <div class="avatar"></div>
     </header>
 
-    <!-- === Main Content: Search Form === -->
-    <main>
-        <div class="main-content-wrapper">
-            <h1 id="main-title" class="main-title animated-element animate-forwards" data-delay="0">
-                Advance Search
-            </h1>
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="container">
+        <h1 class="page-title">Advance Search</h1>
 
-            <div class="form-fields-container">
-                <div id="field-name" class="form-field animated-element animate-forwards" data-delay="200">
-                    <div class="form-label">
-                        <span>Name</span>
-                    </div>
-                    <div class="form-input-control">
-                        <input type="text" id="input-name" placeholder="" />
-                    </div>
-                </div>
+        <form class="search-form">
 
-                <div id="field-category" class="form-field animated-element animate-forwards" data-delay="300">
-                    <div class="form-label">
-                        <span>Category</span>
-                    </div>
-                    <div class="form-input-control">
-                        <select id="select-category">
-                            <option value="">Select a Category</option>
-                            <option value="category1">Category 1</option>
-                            <option value="category2">Category 2</option>
-                            <option value="category3">Category 3</option>
-                            <option value="photocard">Photocard</option>
-                            <option value="poster">Poster</option>
-                            <option value="accessories">Accessories</option>
-                            <option value="lightstick">Light Stick</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Community Field -->
-                <div id="field-community" class="form-field animated-element animate-forwards" data-delay="400">
-                    <div class="form-label">
-                        <span>Community</span>
-                    </div>
-                    <div class="form-input-control">
-                        <input type="text" id="input-community" placeholder="" />
-                    </div>
-                </div>
-
-                <!-- Rating Field -->
-                <div id="field-rating" class="form-field animated-element animate-forwards" data-delay="500">
-                    <div class="form-label">
-                        <span>Rating</span>
-                    </div>
-                    <div class="form-input-control rating-buttons-container">
-                        <button class="rating-button" data-rating="5">
-                            <img alt="Star" src="https://c.animaapp.com/mi1npewox6dlCb/img/vector.svg" />
-                            <span>5</span>
-                        </button>
-                        <button class="rating-button" data-rating="4">
-                            <img alt="Star" src="https://c.animaapp.com/mi1npewox6dlCb/img/vector.svg" />
-                            <span>≥4</span>
-                        </button>
-                        <button class="rating-button" data-rating="3">
-                            <img alt="Star" src="https://c.animaapp.com/mi1npewox6dlCb/img/vector.svg" />
-                            <span>≥3</span>
-                        </button>
-                        <button class="rating-button" data-rating="2">
-                            <img alt="Star" src="https://c.animaapp.com/mi1npewox6dlCb/img/vector.svg" />
-                            <span>≥2</span>
-                        </button>
-                        <button class="rating-button" data-rating="1">
-                            <img alt="Star" src="https://c.animaapp.com/mi1npewox6dlCb/img/vector.svg" />
-                            <span>≥1</span>
-                        </button>
-                    </div>
-                </div>
-                <!-- Availability Field -->
-                <div id="field-availability" class="form-field animated-element animate-forwards" data-delay="600">
-                    <div class="form-label">
-                        <span>Availability</span>
-                    </div>
-                    <!-- Increased space between In Stock and Out Of Stock -->
-                    <div class="form-input-control availability-controls"> 
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="in-stock" checked />
-                            <label htmlFor="in-stock">In Stock</label>
-                        </div>
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="out-of-stock" checked />
-                            <label htmlFor="out-of-stock">Out Of Stock</label>
-                        </div>
-                    </div>
-                </div>
-                <!-- Action Buttons -->
-                <div class="action-buttons-container animated-element animate-forwards"  data-delay="700">
-                    <button id="search-btn" onclick="window.location.href='Advanced_Search2.html'" class="search-btn">
-                        Search
-                    </button>
-                    <button id="clear-btn" class="clear-btn">
-                        Clear
-                    </button>
-                </div>
-            </div>
-        </div>
-    </main>
-    <!-- === Footer Section === -->
-    <footer id="footer-section" class="footer-section">
-        <div class="footer-content-wrapper">
-            <div id="footer-logo-tagline" class="footer-logo-tagline animated-element animate-forwards" data-delay="0">
-                <div class="footer-logo-box">
-                    <span class="footer-logo-text">Guuds</span>
-                </div>
-                <span class="footer-tagline-text">
-                    K-pop Community Market
-                </span>
+            <!-- Name -->
+            <div class="form-row">
+                <div class="form-label">Name</div>
+                <input type="text" id="name" class="input">
             </div>
 
-            <nav id="footer-nav" class="footer-nav animated-element animate-forwards" data-delay="200">
-                <a href="About.html" class="footer-link">About</a>
-            </nav>
+            <!-- Category -->
+            <div class="form-row">
+                <div class="form-label">Category</div>
+                <select id="category" class="input">
+                    <option value="">Select Category</option>
+                    <option value="albums">Albums</option>
+                    <option value="photocard">Photocard</option>
+                    <option value="poster">Poster</option>
+                    <option value="accessories">Accessories</option>
+                    <option value="lightstick">Light Stick</option>
+                </select>
+            </div>
 
+            <!-- Community -->
+            <div class="form-row">
+                <div class="form-label">Community</div>
+                <input type="text" id="community" class="input">
+            </div>
+
+            <!-- Rating -->
+            <div class="form-row">
+                <div class="form-label">Rating</div>
+
+                <div class="rating-group">
+                    <button class="rating-btn" data-rating="5">★ 5</button>
+                    <button class="rating-btn" data-rating="4">★ ≥4</button>
+                    <button class="rating-btn" data-rating="3">★ ≥3</button>
+                    <button class="rating-btn" data-rating="2">★ ≥2</button>
+                    <button class="rating-btn" data-rating="1">★ ≥1</button>
+                </div>
+            </div>
+
+            <!-- Availability -->
+            <div class="form-row">
+                <div class="form-label">Availability</div>
+
+                <div class="availability">
+                    <label><input type="checkbox" id="in-stock" checked> In Stock</label>
+                    <label><input type="checkbox" id="out-stock" checked> Out Of Stock</label>
+                </div>
+            </div>
+
+            <!-- Buttons -->
+            <div class="actions">
+                <button type="button" class="btn-search" id="searchBtn">Search</button>
+                <button type="button" class="btn-clear" id="clearBtn">Clear</button>
+            </div>
+
+        </form>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+    <div class="footer-content">
+
+        <div class="footer-top">
+            <div class="footer-logo">
+                <span>Guuds</span>
+            </div>
+            <span class="footer-tagline">K-pop Community Market</span>
         </div>
-    </footer>
 
-    <!-- === JavaScript === -->
-    <script>
-        // --- Form Interaction Logic ---
-        document.addEventListener('DOMContentLoaded', () => {
-            const ratingButtons = document.querySelectorAll('.rating-button');
-            const searchBtn = document.getElementById('search-btn');
-            const clearBtn = document.getElementById('clear-btn');
-            const nameInput = document.getElementById('input-name');
-            const categorySelect = document.getElementById('select-category');
-            const communityInput = document.getElementById('input-community');
-            const inStockCheckbox = document.getElementById('in-stock');
-            const outOfStockCheckbox = document.getElementById('out-of-stock');
-            
-            let selectedRating = null;
+        <a href="About.html" class="footer-link">About</a>
+    </div>
+</footer>
 
-            // Rating Button Click Handler
-            ratingButtons.forEach(button => {
-                const ratingValue = button.getAttribute('data-rating');
-                button.addEventListener('click', (e) => {
-                    e.preventDefault(); 
-                    
-                    if (button.classList.contains('selected')) {
-                        // Deselect if already selected
-                        button.classList.remove('selected');
-                        selectedRating = null;
-                    } else {
-                        // Select the new button
-                        ratingButtons.forEach(r => r.classList.remove('selected'));
-                        button.classList.add('selected');
-                        selectedRating = ratingValue;
-                    }
-                });
-            });
-
-            // Clear Button Handler
-            clearBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                nameInput.value = '';
-                communityInput.value = '';
-                categorySelect.selectedIndex = 0;
-                
-                ratingButtons.forEach(r => r.classList.remove('selected'));
-                selectedRating = null;
-                
-                // Reset checkboxes to default state (as defined in original JSX/design)
-                inStockCheckbox.checked = true;
-                outOfStockCheckbox.checked = true;
-                
-                console.log('--- Form cleared. ---');
-            });
-
-            // Search Button Handler
-            searchBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const searchData = {
-                    Name: nameInput.value.trim(),
-                    Category: categorySelect.value,
-                    Community: communityInput.value.trim(),
-                    Rating: selectedRating || 'Any',
-                    InStock: inStockCheckbox.checked,
-                    OutOfStock: outOfStockCheckbox.checked
-                };
-
-                console.log('--- Submitting Advance Search Data: ---');
-                console.log(searchData);
-            });
-
-            // --- Animation Logic ---
-            const animatedElements = document.querySelectorAll('.animated-element');
-
-            animatedElements.forEach(el => {
-                const delay = parseInt(el.getAttribute('data-delay') || '0', 10);
-                
-                // Apply CSS animation with calculated delay
-                el.style.animation = `fade-in 0.6s ease-out forwards`;
-                el.style.animationDelay = `${delay}ms`;
-            });
-        });
-    </script>
+    <script src="Advance_Search.js"></script>
 </body>
 </html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Product Management</title>
+    <link rel="stylesheet" href="ManageProduct.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+    <div class="nav-inner">
+
+        <div class="logo">
+            <span class="logo-pill">Guuds</span>
+            <span class="logo-text">K-pop Community Market</span>
+        </div>
+
+        <div class="right-menu">
+            <a href="ManageProduct.html" class="menu-link active">Manage products</a>
+            <a href="03ManageUser.html" class="menu-link">Manage User</a>
+
+            <div class="profile-circle">
+                <i class="material-icons" onclick="window.location.href='PublisherProfile.html'">person</i>
+            </div>
+        </div>
+
+    </div>
+</header>
+
+
+<!-- MAIN PAGE -->
+<div class="container">
+
+    <h1 class="page-title">Product Management</h1>
+
+    <!-- TABLE HEADER -->
+    <div class="table-top">
+        <input id="searchBox" type="text" placeholder="Search for product">
+        <button class="add-btn" onclick="openAddProduct()">+ Add Product</button>
+    </div>
+
+    <!-- TABLE -->
+    <table class="product-table" id="productTable">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Categories</th>
+                <th>Artist</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Status</th>
+                <th>Seller</th>
+                <th>Created</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody id="productBody"></tbody>
+    </table>
+
+</div>
+
+
+<!-- POPUP: ADD PRODUCT -->
+<div class="popup-overlay" id="popupAddProduct">
+    <div class="popup">
+
+        <div class="popup-header">
+            <h3>Add Product</h3>
+            <span class="close-btn" onclick="closeAddProduct()">✕</span>
+        </div>
+
+        <div class="popup-body">
+
+            <div class="form-row">
+                <div>
+                    <label>Product Name</label>
+                    <input id="add_pname" type="text">
+                </div>
+                <div>
+                    <label>Artist</label>
+                    <input id="add_artist" type="text">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div>
+                    <label>Category</label>
+                    <select id="add_category">
+                        <option>Album</option>
+                        <option>Photocard</option>
+                        <option>Merch</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Price (THB)</label>
+                    <input id="add_price" type="number">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div>
+                    <label>Stock</label>
+                    <input id="add_stock" type="number">
+                </div>
+                <div>
+                    <label>Status</label>
+                    <select id="add_status">
+                        <option>Available</option>
+                        <option>Sold Out</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Seller Type</label>
+                    <select id="add_sellerType">
+                        <option>User</option>
+                        <option>Publisher</option>
+                    </select>
+                </div>
+            </div>
+
+            <label>Seller Name</label>
+            <input id="add_seller" type="text">
+
+            <label>Description</label>
+            <input id="add_desc" type="text">
+
+        </div>
+
+        <div class="popup-footer">
+            <button onclick="closeAddProduct()">Cancel</button>
+            <button class="add-btn" onclick="saveProduct()">Save</button>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- POPUP: EDIT PRODUCT -->
+<div class="popup-overlay" id="popupEditProduct">
+    <div class="popup">
+
+        <div class="popup-header">
+            <h3>Edit Product</h3>
+            <span class="close-btn" onclick="closeEditProduct()">✕</span>
+        </div>
+
+        <div class="popup-body">
+
+            <div class="form-row">
+                <div>
+                    <label>Product Name</label>
+                    <input id="edit_pname" type="text">
+                </div>
+                <div>
+                    <label>Artist</label>
+                    <input id="edit_artist" type="text">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div>
+                    <label>Category</label>
+                    <select id="edit_category">
+                        <option>Album</option>
+                        <option>Photocard</option>
+                        <option>Merch</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Price (THB)</label>
+                    <input id="edit_price" type="number">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div>
+                    <label>Stock</label>
+                    <input id="edit_stock" type="number">
+                </div>
+                <div>
+                    <label>Status</label>
+                    <select id="edit_status">
+                        <option>Available</option>
+                        <option>Sold Out</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Seller Type</label>
+                    <select id="edit_sellerType">
+                        <option>User</option>
+                        <option>Publisher</option>
+                    </select>
+                </div>
+            </div>
+
+            <label>Seller Name</label>
+            <input id="edit_seller" type="text">
+
+            <label>Description</label>
+            <input id="edit_desc" type="text">
+
+        </div>
+
+        <div class="popup-footer">
+            <button onclick="closeEditProduct()">Cancel</button>
+            <button class="add-btn" onclick="saveEditProduct()">Save</button>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- POPUP: DELETE PRODUCT -->
+<div class="popup-overlay" id="popupDeleteProduct">
+    <div class="popup delete-popup">
+
+        <div class="popup-header">
+            <h3>Delete Product</h3>
+            <span class="close-btn" onclick="closeDeleteProduct()">✕</span>
+        </div>
+
+        <p class="delete-text">Are you sure you want to delete this product?</p>
+
+        <div class="popup-footer">
+            <button onclick="closeDeleteProduct()">Cancel</button>
+            <button class="delete-btn" onclick="confirmDelete()">Delete</button>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- POPUP: SUCCESS -->
+<div class="popup-overlay" id="popupSuccessProduct">
+    <div class="popup success-popup">
+        <span class="close-btn" onclick="closeSuccessProduct()">✕</span>
+
+        <h2>Add Product Successful</h2>
+
+        <button class="add-btn" onclick="closeSuccessProduct()">Close</button>
+    </div>
+</div>
+<!-- FOOTER -->
+        <footer class="footer">
+            <div class="footer-inner">
+                <div class="logo">
+                    <span class="logo-pill">Guuds</span>
+                    <span class="logo-text">K-pop Community Market</span>
+                </div>
+
+                <ul class="footer-links">
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+        </footer>
+
+<script src="ManageProduct.js"></script>
+</body>
+</html>

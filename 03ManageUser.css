@@ -11,122 +11,77 @@ body {
 
 
 
+/* NAVBAR -------------------------------------------------- */
 .navbar {
     width: 100%;
-    border-bottom: 1px solid #e5e7eb;
+    padding: 15px 0;
     background: white;
+    border-bottom: 1px solid #eee;
 }
 
 .nav-inner {
-    height: 70px;
     max-width: 1150px;
     margin: auto;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 0 20px;
-    gap: 20px;
+}
 
+/* LEFT LOGO */
+.logo {
+    display: flex;
+    align-items: center;
 }
 
 .logo-pill {
-
-    background: linear-gradient(90deg, #EF5DA8, #845FF4);
-    padding: 8px 16px;
-    color: white;
-
+    background: linear-gradient(90deg,#EF5DA8,#845FF4);
+    padding: 8px 14px;
     border-radius: 10px;
-    font-weight: 860;
-    font-size: 25.846px;
-
-
-    width: 104px;
-    height: 35.83px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 12px;
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
 }
 
 .logo-text {
-    font-size: 26.582px;
-    font-weight: 274;
     margin-left: 12px;
+    font-size: 20px;
+    font-weight: 500;
 }
 
-.nav-links {
+/* RIGHT SIDE MENU */
+.right-menu {
     display: flex;
-    gap: 24px;
-    margin-left: 40px;
-    flex: 1;
+    align-items: center;
+    gap: 40px;
 }
 
-.nav-links a {
-
-    color: var(--black);
+.menu-link {
     text-decoration: none;
-    padding: 8px;
-
-    position: relative;
-    transition: color .25s ease;
-
+    color: #333;
+    font-size: 16px;
 }
 
-.nav-links a::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -4px;
-    transform: translateX(-50%);
-    width: 0%;
-    height: 3px;
-    background: #845FF4;
-    border-radius: 3px;
-    transition: width .25s ease;
+.menu-link:hover {
+    color: #845FF4;
 }
 
-.nav-links a:hover {
-    background: #e5e5ff;
-    color: var(--accent);
-    border-radius: 10px;
-}
-
-.nav-links .active,
-.vav-links a:hover {
-    text-align: center;
-    font-style: normal;
-    color: var(--accent);
-    width: 134px;
-    height: 30px;
-    flex-shrink: 0;
-    border-radius: 10px;
-    background: #e5e5ff;
-}
-
-.circle {
-    height: 38px;
-    width: 38px;
-    background: #f4edff;
+/* PROFILE ICON */
+.profile-circle {
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
+    background: #f4edff;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
-    color: var(--accent);
+    color: #845FF4;
+    cursor: pointer;
 }
 
-
-.nav-profile {
-    height: 38px;
-    width: 38px;
-    background: #f4edff;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    color: var(--accent);
+.profile-circle:hover {
+    background: #e5d9ff;
 }
-
 
 .page {
     max-width: 1150px;
@@ -201,7 +156,14 @@ body {
     border-radius: 10px;
     cursor: pointer;
 }
+.popup-footer button {
+    background: #ddd;
+}
 
+.popup-footer .add-btn {
+    background: linear-gradient(90deg,#EF5DA8,#845FF4) ;
+    color: white;
+}
 
 .user-table {
     width: 100%;
@@ -266,7 +228,6 @@ body {
 .close-btn {
     cursor: pointer;
     font-size: 20px;
-    color: #888;
 }
 
 
@@ -351,4 +312,41 @@ body {
     display: flex;
     justify-content: flex-end;
     gap: 10px;
+}
+
+/* FOOTER */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin-top: 60px;
+  padding: 40px 20px;
+  background: linear-gradient(90deg, #ffd1e6, #e3ceff);
+}
+
+
+.footer-inner {
+  max-width: 1150px;
+  margin: auto;
+}
+
+.footer-links {
+  margin-top: 20px;
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 8px;
+
+}
+
+.footer-links a {
+  font-size: 28px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #845FF4, #EF5DA8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  text-decoration: none;
 }

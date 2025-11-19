@@ -3,137 +3,224 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guuds Product</title>
+    <title>User Management</title>
     <link rel="stylesheet" href="03ManageUser.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-<header class="navbar">
-    <div class="nav-inner">
-        <div class="logo">
-            <span class="logo-pill">Guuds</span>
-            <span class="gradient-text">K-pop Community Market</span>
-
-        </div>
-
-        <nav class="nav-links">
-            <a href="Home.html">Home</a>
-            <a href="Marketplace.html">Marketplace</a>
-            <a href="Search.html">Search</a>
-            <a href="Community.html">Communities</a>
-            <a href="About.html">Team</a>
-        </nav>
-
-        <div class="circle">
-            <i class="material-icons">person</i>
-        </div>
-</header>
-
 <body>
-    <div class="manage-user">
-        <div class="title">
-            <h1>User management</h1>
+
+    <header class="navbar">
+        <div class="nav-inner">
+            <div class="logo">
+                <span class="logo-pill">Guuds</span>
+                <span class="gradient-text">K-pop Community Market</span>
+
+            </div>
+
+            <nav class="nav-links">
+                <a href="Home.html">Home</a>
+                <a href="Marketplace.html">Marketplace</a>
+                <a href="Search.html">Search</a>
+                <a href="Community.html">Communities</a>
+                <a href="About.html">Team</a>
+            </nav>
+
+            <div class="circle">
+                <i class="material-icons" onclick="window.location.href='UserProfile-Unverify.html'">person</i>
+            </div>
         </div>
-        <div class="state">
-            <div class="label">Total User</div>
-            <div class="value" id="stat-total">0</div>
-        </div>
-        <div class="state">
-            <div class="label">Active User</div>
-            <div class="value" id="stat-total">0</div>
+    </header>
+
+
+    <div class="container">
+
+        <h1 class="page-title">User Management</h1>
+
+        <div class="info-row">
+
+            <div class="info-box">
+                <p>Total User</p>
+                <h2 id="totalUser">4</h2>
+            </div>
+
+            <div class="info-box">
+                <p>Active User</p>
+                <h2 id="activeUser">1</h2>
+            </div>
+
+            <div class="info-box">
+                <p>Official Stores</p>
+                <h2 id="officialStores">0</h2>
+            </div>
+
+            <div class="info-box">
+                <p>Publisher Stores</p>
+                <h2 id="publisherStores">2</h2>
+            </div>
+
         </div>
 
-        <div class="state">
-            <div class="label">Official Stores</div>
-            <div class="value" id="stat-official">0</div>
+        <!-- TABLE HEADER -->
+        <div class="table-top">
+            <input id="searchBox" type="text" placeholder="Search for user">
+            <button class="add-btn" onclick="openAddPopup()">+ Add User</button>
         </div>
-        <div class="state">
-            <div class="label">Publisher Stores</div>
-            <div class="value" id="stat-publisher">0</div>
-        </div>
+
+        <!-- TABLE -->
+        <table class="user-table" id="userTable">
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Communities</th>
+                    <th>Register Date</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="userBody"></tbody>
+        </table>
+
     </div>
 
-    <div class="button-add">
-        <button class="toggle-btn active" onclick="showmodal()"> + Add User</button>
 
-        <div id="mymodal" class="modal-content">
-            <from class="from-add">
-                <div class="wrapper">
-                    <h2>Add User</h2>
-                    <div class="box b">
+    <!-- POPUP: ADD USER -->
+    <div class="popup-overlay" id="popupAdd">
+        <div class="popup">
+            <div class="popup-header">
+                <h3>Add User</h3>
+                <span class="close-btn" onclick="closeAdd()">✕</span>
+            </div>
+
+            <div class="popup-body">
+
+                <div class="form-row">
+                    <div>
                         <label>Username</label>
-                        <input type="text" required>
+                        <input id="add_username" type="text" />
                     </div>
-                    <div class="box c">
+                    <div>
                         <label>Email Address</label>
-                        <input type="email" placeholder="xxxx@xxx.xxx" required>
+                        <input id="add_email" type="text" />
                     </div>
-                    <div class="box b">
-                        <label>User Type</label>
-                        <input type="text" required>
-                    </div>
-                    <div class="box c">
-                        <label>Account Status</label>
-                        <input type="text" required>
-                    </div>
-                    <div class="box a">
-                        <label>Communitiese</label>
-                        <input type="text" required>
-                    </div>
-                    <div class="payment-actions">
-                        <button id="confirm" class="btn-confirm "
-                            onclick="window.location.href='02Payment-Success.html'">Confirm</button>
-                        <button id="cancel" class="btn-cancel" onclick="Deletemodal()">Cancel</button>
-                    </div>
-
                 </div>
 
-            </from>
-        </div>
-    </div>
-    <div class="Manage-user-details">
-        <div class="user-search">
-            <input id="searchinput" type="text" class="search-input" placeholder="Search users">
-            <button class="search-btn">Search</button>
-        </div>
-        <div class="user-table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>User</th>
-                        <th>Role</th>
-                        <th>Status</th>
-                        <th>Communities</th>
-                        <th>Register Date</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Address</th>
-                        <th style="text-align:center">Action</th>
-                    </tr>
-                </thead>
-                <tbody id="userTableBody"></tbody>
-            </table>
+                <div class="form-row">
+                    <div>
+                        <label>User Type</label>
+                        <select id="add_type">
+                            <option>User</option>
+                            <option>Publisher</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Account Status</label>
+                        <select id="add_status">
+                            <option>Active</option>
+                            <option>Inactive</option>
+                        </select>
+                    </div>
+                </div>
+
+                <label>Communities (comma-separated)</label>
+                <input id="add_comm" type="text" />
+
+                <label>Verify Account</label>
+                <input id="add_verify" type="checkbox" />
+            </div>
+
+            <div class="popup-footer">
+                <button onclick="closeAdd()">Cancel</button>
+                <button class="add-btn" onclick="saveUser()">Add</button>
+            </div>
         </div>
     </div>
 
+
+    <!-- POPUP: EDIT USER -->
+    <div class="popup-overlay" id="popupEdit">
+        <div class="popup">
+            <div class="popup-header">
+                <h3>Edit User</h3>
+                <span class="close-btn" onclick="closeEdit()">✕</span>
+            </div>
+
+            <div class="popup-body">
+
+                <div class="form-row">
+                    <div>
+                        <label>Username</label>
+                        <input id="edit_username" type="text" />
+                    </div>
+                    <div>
+                        <label>Email Address</label>
+                        <input id="edit_email" type="text" />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div>
+                        <label>User Type</label>
+                        <select id="edit_type">
+                            <option>User</option>
+                            <option>Publisher</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Account Status</label>
+                        <select id="edit_status">
+                            <option>Active</option>
+                            <option>Inactive</option>
+                        </select>
+                    </div>
+                </div>
+
+                <label>Communities (comma-separated)</label>
+                <input id="edit_comm" type="text" />
+            </div>
+
+            <div class="popup-footer">
+                <button onclick="closeEdit()">Cancel</button>
+                <button class="add-btn" onclick="saveEdit()">Save</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- POPUP: SUCCESS -->
+    <div class="popup-overlay" id="popupSuccess">
+        <div class="popup success-popup">
+            <span class="close-btn success-close" onclick="closeSuccess()">✕</span>
+            <h2>Add User Successful</h2>
+            <button class="add-btn" onclick="closeSuccess()">Close</button>
+        </div>
+    </div>
+    <!-- POPUP: DELETE CONFIRM -->
+    <div class="popup-overlay" id="popupDelete">
+        <div class="popup delete-popup">
+
+            <div class="popup-header">
+                <h3>Delete User</h3>
+                <span class="close-btn" onclick="closeDelete()">✕</span>
+            </div>
+
+            <p style="margin: 10px 0 20px; font-size: 16px;">
+                Are you sure you want to delete this user?
+            </p>
+
+            <div class="popup-footer">
+                <button onclick="closeDelete()">Cancel</button>
+                <button class="add-btn" style="background:#ff4d4d" onclick="confirmDelete()">Delete</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="03ManageUser.js"></script>
 </body>
-
-<footer class="footer">
-    <div class="footer-inner">
-        <div class="logo">
-            <span class="logo-pill">Guuds</span>
-            <span class="logo-text">K-pop Community Market</span>
-        </div>
-
-        <ul class="footer-links">
-            <li><a href="about.html">About</a></li>
-        </ul>
-    </div>
-
-</footer>
-<script src="UserDB.js"></script>
-<script src="03ManageUser.js"></script>
 
 </html>

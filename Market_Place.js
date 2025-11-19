@@ -19,7 +19,7 @@ const navLinks = [
     { label: "Marketplace", href: "Market_Place.html", active: true },
     { label: "Search", href: "Search.html", active: false },
     { label: "Communities", href: "Communities.html", active: false },
-    { label: "Team", href: "Team.html", active: false },
+    { label: "Team", href: "About.html", active: false },
 ];
 
 const sortOptions = [

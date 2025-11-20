@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="01Product.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- NAVBAR ใช้อันเดิม -->
+    <header class="navbar">
+        <div class="nav-inner">
+            <div class="logo">
+                <span class="logo-pill">Guuds</span>
+                <span class="gradient-text">K-pop Community Market</span>
+            </div>
+
+            <nav class="nav-links">
+                <a href="Home.html">Home</a>
+                <a href="Marketplace.html">Marketplace</a>
+                <a href="Search.html">Search</a>
+                <a href="Community.html">Communities</a>
+                <a href="About.html">Team</a>
+            </nav>
+
+            <div class="circle">
+                <i class="material-icons" onclick="window.location.href='UserProfile-Unverify.html'">person</i>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN -->
+    <div class="product-container">
+
+        <a href="Marketplace.html" class="back-btn">← Back</a>
+
+        <h1 class="page-title">Product Details</h1>
+
+        <div class="details-layout">
+
+            <!-- LEFT SIDE -->
+            <div class="left-section">
+
+                <div class="left-top">
+
+                    <div class="main-img-box">
+                        <img id="main-image" src="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg">
+                    </div>
+
+                    <div class="thumb-column">
+                        <img class="thumb selected" src="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg">
+                        <img class="thumb" src="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg">
+
+                        <div class="plus-box">+</div>
+                    </div>
+
+                </div>
+
+                <div class="review-box">
+                    <span>Review: 2.5 k</span>
+                    <span class="divider">|</span>
+                    <span>Rating:</span>
+                    <span class="star">★★★★★</span>
+                    <span>4.9</span>
+                </div>
+
+            </div>
+
+            <!-- RIGHT SIDE -->
+            <div class="right-section">
+
+                <h2 id="product-name">Product Name</h2>
+
+                <h3 class="desc-title">Description</h3>
+
+                <div class="desc-box">
+                    <br>
+                    Every track feels like a soft confession wrapped in warmth.
+                    Her vocals glide so effortlessly that you don’t just listen — you feel everything.
+                </div>
+
+                <h3 class="stock-title">In Stock</h3>
+
+                <p class="price"><span class="baht">฿</span> <span id="price-value">750</span></p>
+
+                <div class="qty-control">
+                    <button id="minus">−</button>
+                    <span id="qty">1</span>
+                    <button id="plus">+</button>
+                </div>
+
+                <div class="action-btns">
+                    <button class="btn-cart" onclick="window.location.href='ShoppingCart.html'">Add To Cart</button>
+                    <button class="btn-buy" onclick="window.location.href='Payment.html'">Buy Now</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FOOTER ใช้ของเดิม -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-logo"><span>Guuds</span></div>
+                <span class="footer-tagline">K-pop Community Market</span>
+            </div>
+            <a href="About.html" class="footer-link">About</a>
+        </div>
+    </footer>
+
+    <script src="01Product.js"></script>
+
+</body>
+</html>

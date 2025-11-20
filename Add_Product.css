@@ -20,9 +20,6 @@
     --footer-link-gradient: linear-gradient(92deg, #845ff4 12%, #ef5da8 65%);
 }
 
-/* ============================================================
-   GLOBAL
-   ============================================================ */
 * {
     margin: 0;
     padding: 0;
@@ -171,9 +168,6 @@ main {
     background-position: right 12px center;
 }
 
-/* ============================================================
-   PHOTO UPLOAD
-   ============================================================ */
 .photo-upload-section {
     margin-bottom: 55px;
 }
@@ -202,9 +196,6 @@ main {
     color: #aaa;
 }
 
-/* ============================================================
-   ACTION BUTTONS
-   ============================================================ */
 .action-buttons-group {
     display: flex;
     justify-content: flex-end;

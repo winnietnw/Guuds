@@ -67,4 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log(searchData);
     });
 
+    document.getElementById("searchBtn").addEventListener("click", function () {
+        window.location.href = "AfterSearch.html";
+    });
+
 });

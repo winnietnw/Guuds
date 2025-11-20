@@ -11,7 +11,7 @@ body {
 
 
 
-/* NAVBAR */
+/* NAVBAR -------------------------------------------------- */
 .navbar {
     width: 100%;
     padding: 15px 0;
@@ -35,7 +35,7 @@ body {
 }
 
 .logo-pill {
-    background: linear-gradient(90deg, #EF5DA8, #845FF4);
+    background: linear-gradient(90deg,#EF5DA8,#845FF4);
     padding: 8px 14px;
     border-radius: 10px;
     color: white;
@@ -83,9 +83,17 @@ body {
     background: #e5d9ff;
 }
 
+.page {
+    max-width: 1150px;
+    margin: auto;
+    padding: 30px 20px;
+}
 
-
-
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 30px;
+}
 
 .page-title {
     font-size: 32px;
@@ -148,13 +156,12 @@ body {
     border-radius: 10px;
     cursor: pointer;
 }
-
 .popup-footer button {
     background: #ddd;
 }
 
 .popup-footer .add-btn {
-    background: linear-gradient(90deg, #EF5DA8, #845FF4);
+    background: linear-gradient(90deg,#EF5DA8,#845FF4) ;
     color: white;
 }
 
@@ -309,51 +316,37 @@ body {
 
 /* FOOTER */
 .footer {
-    width: 100%;
-    margin-top: 60px;
-    padding: 40px 20px;
-    background: linear-gradient(90deg, #ffd1e6, #e3ceff);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin-top: 60px;
+  padding: 40px 20px;
+  background: linear-gradient(90deg, #ffd1e6, #e3ceff);
 }
 
-html,
-body {
-    height: 100%;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-}
-
-.container {
-    width: 100%;
-    max-width: 1150px;
-    margin: auto;
-    padding: 30px 40px;
-}
 
 .footer-inner {
-    max-width: 1150px;
-    margin: auto;
+  max-width: 1150px;
+  margin: auto;
 }
 
 .footer-links {
-    margin-top: 20px;
-    list-style: none;
+  margin-top: 20px;
+  list-style: none;
 }
 
 .footer-links li {
-    margin-bottom: 8px;
+  margin-bottom: 8px;
 
 }
 
 .footer-links a {
-    font-size: 28px;
-    font-weight: bold;
-    background: linear-gradient(90deg, #845FF4, #EF5DA8);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
-    text-decoration: none;
+  font-size: 28px;
+  font-weight: bold;
+  background: linear-gradient(90deg, #845FF4, #EF5DA8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  text-decoration: none;
 }

@@ -1,135 +1,211 @@
-let users = [
-    {
-        username: "User Name",
-        role: "User",
-        status: "Active",
-        comm: "Test",
-        date: "10-10-2024",
-        name: "Test",
-        email: "test@mail.com",
-        address: "Test address"
-    }
-];
+const API = "http://localhost:3000/api/users";
 
+let users = [];
 let editIndex = null;
 let deleteIndex = null;
 
-function loadTable() {
-    const body = document.getElementById("userBody");
-    body.innerHTML = "";
+async function loadTableFromServer() {
+  try {
+    const res = await fetch(API);
+    users = await res.json();
+    renderTable(users);
+    updateCounts(users);
+  } catch (err) {
+    console.error(err);
+  }
+}
 
-    users.forEach((u, i) => {
-        body.innerHTML += `
-        <tr>
-            <td>${u.username}</td>
-            <td>${u.role}</td>
-            <td>${u.status}</td>
-            <td>${u.comm}</td>
-            <td>${u.date}</td>
-            <td>${u.name}</td>
-            <td>${u.email}</td>
-            <td>${u.address}</td>
-            <td class="action-icons">
-                <i class="material-icons" onclick="openEdit(${i})">edit</i>
-                <i class="material-icons" style="color:red" onclick="openDeletePopup(${i})">delete</i>
-            </td>
-        </tr>`;
+function renderTable(list) {
+  const body = document.getElementById("userBody");
+  body.innerHTML = "";
+
+  list.forEach((u, i) => {
+    const first = u.firstName || u.UserFname || "";
+    const last = u.lastName || u.UserLname || "";
+    const name = (first + " " + last).trim();
+    const username = u.username || u.Username || "";
+    const role = u.role || u.Role || "User";
+    const active = (u.active !== undefined) ? u.active : (u.UserS_Active ? true : false);
+    const email = u.email || u.UserEmail || "";
+    const regDateRaw = u.registerDate || u.UserRegisterDate;
+    const regDate = regDateRaw ? new Date(regDateRaw).toLocaleDateString() : "";
+    const address = u.address ? `${u.address.street || ""} ${u.address.city || ""}` : `${u.UserA_Street || ""} ${u.UserA_City || ""}`.trim();
+
+    body.innerHTML += `
+      <tr>
+        <td>${username}</td>
+        <td>${role}</td>
+        <td>${active ? "Active" : "Inactive"}</td>
+        <td>${u.communities || ""}</td>
+        <td>${regDate}</td>
+        <td>${name}</td>
+        <td>${email}</td>
+        <td>${address}</td>
+        <td class="action-icons">
+          <i class="material-icons" onclick="openEdit(${i})">edit</i>
+          <i class="material-icons" style="color:red" onclick="openDeletePopup(${i})">delete</i>
+        </td>
+      </tr>`;
+  });
+}
+
+function updateCounts(list = users) {
+  document.getElementById("totalUser").innerText = list.length;
+
+  const activeUser = list.filter(u => {
+    if (u.active !== undefined) return u.active;
+    return u.UserS_Active ? true : false;
+  }).length;
+  document.getElementById("activeUser").innerText = activeUser;
+
+  document.getElementById("publisherStores").innerText =
+    list.filter(u => (u.role || u.Role || "").toLowerCase() === "publisher").length;
+}
+
+function setupSearch() {
+  const box = document.getElementById("searchBox");
+  box.addEventListener("input", e => {
+    const q = e.target.value.toLowerCase();
+    if (!q) {
+      renderTable(users);
+      updateCounts(users);
+      return;
+    }
+
+    const filtered = users.filter(u => {
+      const username = (u.username || u.Username || "").toLowerCase();
+      const email = (u.email || u.UserEmail || "").toLowerCase();
+      const name = ((u.firstName || u.UserFname || "") + " " + (u.lastName || u.UserLname || "")).toLowerCase();
+      return username.includes(q) || email.includes(q) || name.includes(q);
     });
 
-    updateCounts();
+    renderTable(filtered);
+    updateCounts(filtered);
+  });
 }
 
-function updateCounts() {
-    document.getElementById("totalUser").innerText = users.length;
-    document.getElementById("activeUser").innerText = users.filter(u => u.status === "Active").length;
-    document.getElementById("publisherStores").innerText = users.filter(u => u.role === "Publisher").length;
-}
+async function saveUser() {
+  const username = document.getElementById("add_username").value.trim();
+  const email = document.getElementById("add_email").value.trim();
+  const role = document.getElementById("add_type").value;
+  const status = document.getElementById("add_status").value;
 
+  if (!username || !email) return;
+
+  const payload = {
+    Username: username,
+    UserFname: "",
+    UserLname: "",
+    UserEmail: email,
+    UserPhoneNumber: "",
+    UserPassword: "123456",
+    UserA_Street: "",
+    UserA_City: "",
+    UserA_Province: "",
+    UserA_Country: "",
+    UserA_PostalCode: "",
+    UserDOB: null,
+    UserS_Active: status === "Active" ? 1 : 0,
+    UserS_Suspended: 0
+  };
+
+  try {
+    await fetch(API, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+
+    closeAdd();
+    await loadTableFromServer();
+    openSuccess();
+  } catch (err) {
+    console.error(err);
+  }
+}
 
 function openAddPopup() {
-    document.getElementById("popupAdd").style.display = "flex";
+  document.getElementById("popupAdd").style.display = "flex";
 }
 
 function closeAdd() {
-    document.getElementById("popupAdd").style.display = "none";
+  document.getElementById("popupAdd").style.display = "none";
 }
-
-function saveUser() {
-    const newUser = {
-        username: document.getElementById("add_username").value,
-        email: document.getElementById("add_email").value,
-        role: document.getElementById("add_type").value,
-        status: document.getElementById("add_status").value,
-        comm: document.getElementById("add_comm").value,
-        date: "01-02-2025",
-        name: document.getElementById("add_username").value,
-        address: "—"
-    };
-
-    users.push(newUser);
-
-    closeAdd();
-    loadTable();
-    openSuccess();
-}
-
 
 function openEdit(i) {
-    editIndex = i;
+  editIndex = i;
+  const u = users[i];
 
-    const u = users[i];
+  document.getElementById("edit_username").value = u.username || u.Username;
+  document.getElementById("edit_email").value = u.email || u.UserEmail;
+  document.getElementById("edit_type").value = u.role || u.Role;
+  document.getElementById("edit_status").value = (u.active || u.UserS_Active) ? "Active" : "Inactive";
+  document.getElementById("edit_comm").value = u.communities || "";
 
-    document.getElementById("edit_username").value = u.username;
-    document.getElementById("edit_email").value = u.email;
-    document.getElementById("edit_type").value = u.role;
-    document.getElementById("edit_status").value = u.status;
-    document.getElementById("edit_comm").value = u.comm;
-
-    document.getElementById("popupEdit").style.display = "flex";
+  document.getElementById("popupEdit").style.display = "flex";
 }
 
 function closeEdit() {
-    document.getElementById("popupEdit").style.display = "none";
+  document.getElementById("popupEdit").style.display = "none";
 }
 
-function saveEdit() {
-    const u = users[editIndex];
+async function saveEdit() {
+  const u = users[editIndex];
+  const id = u.UserID || u.id;
 
-    u.username = document.getElementById("edit_username").value;
-    u.email = document.getElementById("edit_email").value;
-    u.role = document.getElementById("edit_type").value;
-    u.status = document.getElementById("edit_status").value;
-    u.comm = document.getElementById("edit_comm").value;
+  const payload = {
+    Username: document.getElementById("edit_username").value,
+    UserEmail: document.getElementById("edit_email").value,
+    UserS_Active: document.getElementById("edit_status").value === "Active" ? 1 : 0
+  };
+
+  try {
+    await fetch(`${API}/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
 
     closeEdit();
-    loadTable();
+    await loadTableFromServer();
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 function openDeletePopup(index) {
-    deleteIndex = index;
-    document.getElementById("popupDelete").style.display = "flex";
+  deleteIndex = index;
+  document.getElementById("popupDelete").style.display = "flex";
 }
 
 function closeDelete() {
-    document.getElementById("popupDelete").style.display = "none";
+  document.getElementById("popupDelete").style.display = "none";
 }
 
-function confirmDelete() {
-    if (deleteIndex !== null) {
-        users.splice(deleteIndex, 1);
-        loadTable();
-        updateCounts();
-    }
+async function confirmDelete() {
+  const u = users[deleteIndex];
+  const id = u.UserID || u.id;
 
+  try {
+    await fetch(`${API}/${id}`, { method: "DELETE" });
     closeDelete();
+    await loadTableFromServer();
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 function openSuccess() {
-    document.getElementById("popupSuccess").style.display = "flex";
+  document.getElementById("popupSuccess").style.display = "flex";
 }
 
 function closeSuccess() {
-    document.getElementById("popupSuccess").style.display = "none";
+  document.getElementById("popupSuccess").style.display = "none";
 }
 
-loadTable();
+document.addEventListener("DOMContentLoaded", () => {
+  setupSearch();
+  loadTableFromServer();
+  document.querySelector("#popupAdd .add-btn").addEventListener("click", saveUser);
+  document.querySelector("#popupEdit .add-btn").addEventListener("click", saveEdit);
+});

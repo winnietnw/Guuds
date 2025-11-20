@@ -1,0 +1,487 @@
+/* === CSS Variables and Base Styles === */
+:root {
+    --vibrant-purple: #845ff4;
+    --vibrant-pink: #ef5da8;
+    --light-purple: #a5a6f6;
+    --link-blue: #3603d1;
+    --active-link-bg: #e4e4ff;
+    --text-gray: #000000ab;
+    --input-border: #b3b3b3;
+    --white: #fff;
+
+    /* Gradients */
+    --logo-gradient: linear-gradient(90deg, var(--vibrant-pink) 0%, var(--vibrant-purple) 100%);
+    --hero-title-gradient: linear-gradient(90deg, var(--vibrant-purple) 14%, var(--vibrant-pink) 85%);
+    --header-bg-url: url('https://c.animaapp.com/mhrcnimxAJQP9m/img/rectangle-56.png');
+    --footer-bg-url: url('https://c.animaapp.com/mi1npewox6dlCb/img/rectangle-57.svg');
+    --link-text-gradient: linear-gradient(92deg, rgba(132, 95, 244, 1) 12%, rgba(239, 93, 168, 1) 65%);
+    --marketplace-card-icon-gradient: linear-gradient(90deg, var(--vibrant-pink) 0%, var(--vibrant-purple) 100%);
+
+    /* New gradient for action buttons */
+    --action-button-gradient: linear-gradient(90deg, #704cd0 0%, #d84c98 100%);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Helvetica', Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    color: #000;
+}
+
+/* Animation */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-1rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animated-element {
+    opacity: 0;
+    transform: translateY(-1rem);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-start {
+    animation: fade-in 0.6s ease-out forwards;
+}
+
+/* Header */
+.navbar {
+    width: 100%;
+    border-bottom: 1px solid #e5e7eb;
+    background: white;
+}
+
+.nav-inner {
+    height: 70px;
+    max-width: 1150px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    gap: 20px;
+}
+
+.logo-pill {
+    background: linear-gradient(90deg, #EF5DA8, #845FF4);
+    padding: 8px 16px;
+    color: white;
+    border-radius: 10px;
+    font-weight: 860;
+    font-size: 25.846px;
+    width: 104px;
+    height: 35.83px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 12px;
+}
+
+.logo-text {
+    font-size: 26.582px;
+    font-weight: 274;
+    margin-left: 12px;
+}
+
+.login-btn {
+    padding: 6px 18px;
+    background: #6b6b6b;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+
+.login-btn:hover {
+    opacity: 0.85;
+}
+
+.nav-links {
+    display: flex;
+    gap: 24px;
+    margin-left: 40px;
+    flex: 1;
+}
+
+.nav-links a {
+    color: var(--black);
+    text-decoration: none;
+    padding: 8px;
+    position: relative;
+    transition: color .25s ease;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -4px;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 3px;
+    background: #845FF4;
+    border-radius: 3px;
+    transition: width .25s ease;
+}
+
+.nav-links a:hover {
+    background: #e5e5ff;
+    color: var(--accent);
+    border-radius: 10px;
+}
+
+.nav-links .active {
+    background: #e5e5ff;
+    border-radius: 10px;
+}
+
+.circle {
+    height: 38px;
+    width: 38px;
+    background: #f4edff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: var(--accent);
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    width: 100%;
+    padding-top: 97px;
+    padding-bottom: 176px;
+}
+
+.hero-background-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 417px;
+    object-fit: cover;
+    content: url('https://c.animaapp.com/mhrcnimxAJQP9m/img/rectangle-4.svg');
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero-title {
+    width: 900px;
+    font-size: 59.9px;
+    text-align: center;
+    white-space: nowrap;
+    background-image: var(--hero-title-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 400;
+}
+
+.hero-description {
+    width: 772px;
+    font-size: 18.1px;
+    text-align: center;
+    letter-spacing: -0.54px;
+    line-height: 1.2;
+}
+
+.hero-description a {
+    text-decoration: none;
+    color: var(--link-blue);
+}
+
+/* Hero Button */
+.hero-button {
+    height: 52px;
+    width: 202px;
+    background: var(--action-button-gradient);
+    border: none;
+    box-shadow: none;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.hero-button span {
+    font-weight: 600;
+    color: var(--white);
+}
+
+.hero-button svg {
+    width: 12px;
+    height: 12px;
+    margin-left: 8px;
+    stroke: var(--white);
+}
+
+/* General Sections */
+main {
+    flex-grow: 1;
+}
+
+.section-padding {
+    width: 100%;
+    padding: 0 44px 48px 44px;
+}
+
+.section-title {
+    font-weight: bold;
+    font-size: 52px;
+    white-space: nowrap;
+    margin-bottom: 32px;
+}
+
+.section-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+}
+
+.section-button {
+    height: 33px;
+    width: 250px;
+    background: var(--action-button-gradient);
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.section-button:hover {
+    opacity: 0.9;
+}
+
+.section-button span {
+    font-weight: 600;
+    color: var(--white);
+}
+
+.section-button svg {
+    width: 12px;
+    height: 12px;
+}
+
+/* Scroll Cards */
+.scroll-area {
+    overflow-x: auto;
+    padding-bottom: 16px;
+    width: 100%;
+}
+
+.scroll-container {
+    display: flex;
+    gap: 35px;
+    flex-wrap: nowrap;
+    min-width: max-content;
+}
+
+.card-wrapper {
+    flex-shrink: 0;
+    width: 240px;
+    height: 347px;
+    background-color: var(--white);
+    border-radius: 15px;
+    border: 1px solid #d9d9d9;
+    box-shadow: 0 4px 9.3px rgba(0, 0, 0, 0.05);
+}
+
+.card-content {
+    padding: 1rem;
+    height: 100%;
+}
+
+.card-image {
+    width: 100%;
+    height: 247px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 6px;
+}
+
+.card-details .text {
+    font-size: 16px;
+    color: #1e1e1e;
+}
+
+.card-details .price {
+    font-weight: bold;
+}
+
+/* Marketplace Cards */
+.marketplace-card-wrapper {
+    min-width: 374px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    border: 1.07px solid #d9d9d9;
+    overflow: hidden;
+}
+
+.marketplace-card-image {
+    height: 207px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.marketplace-card-title {
+    position: absolute;
+    bottom: 19px;
+    left: 19px;
+    color: var(--white);
+    font-size: 32px;
+}
+
+.marketplace-card-body {
+    padding: 19px;
+}
+
+.marketplace-card-description {
+    font-size: 14px;
+    color: #585858;
+    margin-bottom: 7px;
+}
+
+.marketplace-card-members {
+    font-size: 14px;
+    color: #585858;
+    margin-bottom: 16px;
+}
+
+.marketplace-card-actions .join-btn {
+    background-color: #585858;
+    color: var(--white);
+    border: none;
+    height: 29px;
+    padding: 0 16px;
+    border-radius: 5px;
+}
+
+/* Why Choose Guuds */
+.why-choose-section {
+    background-color: #fbfbfb;
+    padding: 4rem 0;
+}
+
+.feature-grid-container {
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.feature-grid {
+    margin-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.feature-card {
+    width: 229px;
+    height: 233px;
+    background: var(--white);
+    border-radius: 15px;
+    box-shadow: 0px 4px 9.3px rgba(0, 0, 0, 0.13);
+}
+
+.feature-card-content {
+    padding-top: 40px;
+    padding-left: 24px;
+    padding-right: 24px;
+    text-align: center;
+}
+
+.feature-card-title {
+    margin-bottom: 16px;
+    font-weight: 500;
+    font-size: 14.1px;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.feature-card-description {
+    font-size: 14.1px;
+    color: #585858;
+}
+
+/* Footer */
+.footer-section {
+    width: 100%;
+    background-image: var(--footer-bg-url);
+    background-size: cover;
+    background-position: center;
+}
+
+.footer-content-wrapper {
+    padding: 56px 64px;
+}
+
+.footer-logo-tagline {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 64px;
+}
+
+.footer-logo-box {
+    width: 104px;
+    height: 35px;
+    background: var(--logo-gradient);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-logo-text {
+    font-weight: 800;
+    color: var(--white);
+    font-size: 25.8px;
+}
+
+.footer-tagline-text {
+    font-size: 26.6px;
+    font-weight: 300;
+}
+
+.footer-nav a {
+    background-image: var(--link-text-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 28px;
+    font-weight: bold;
+    text-decoration: none;
+}

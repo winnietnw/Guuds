@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Advance Search</title>
     <link rel="stylesheet" href="Advance_Search.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
 
-    <!-- ===== HEADER ===== -->
-    <header class="header">
-        <div class="header-left">
-            <div class="logo-box">
-                <span class="logo-text">Guuds</span>
+    <header class="navbar">
+        <div class="nav-inner">
+            <div class="logo">
+                <span class="logo-pill">Guuds</span>
+                <span class="gradient-text">K-pop Community Market</span>
             </div>
-            <span class="tagline">K-pop Community Market</span>
+
+            <nav class="nav-links">
+                <a href="Home.html">Home</a>
+                <a href="Marketplace.html">Marketplace</a>
+                <a href="Search.html">Search</a>
+                <a href="Community.html">Communities</a>
+                <a href="About.html">Team</a>
+            </nav>
+
+            <div class="circle">
+                <i class="material-icons" onclick="window.location.href='UserProfile-Unverify.html'">person</i>
+            </div>
         </div>
-
-        <nav class="nav">
-            <a href="Home.html">Home</a>
-            <a href="Market_Place.html">Marketplace</a>
-            <a href="Search.html" class="active">Search</a>
-            <a href="Communities.html">Communities</a>
-            <a href="Team.html">Team</a>
-        </nav>
-
-        <div class="avatar"></div>
     </header>
 
     <!-- ===== MAIN CONTENT ===== -->
@@ -65,11 +68,11 @@
                 <div class="form-label">Rating</div>
 
                 <div class="rating-group">
-                    <button class="rating-btn" data-rating="5">★ 5</button>
-                    <button class="rating-btn" data-rating="4">★ ≥4</button>
-                    <button class="rating-btn" data-rating="3">★ ≥3</button>
-                    <button class="rating-btn" data-rating="2">★ ≥2</button>
-                    <button class="rating-btn" data-rating="1">★ ≥1</button>
+                    <button type="button" class="rating-btn" data-rating="5"><span class="star">★</span> 5</button>
+                    <button type="button" class="rating-btn" data-rating="4"><span class="star">★</span> ≥4</button>
+                    <button type="button" class="rating-btn" data-rating="3"><span class="star">★</span> ≥3</button>
+                    <button type="button" class="rating-btn" data-rating="2"><span class="star">★</span> ≥2</button>
+                    <button type="button" class="rating-btn" data-rating="1"><span class="star">★</span> ≥1</button>
                 </div>
             </div>
 
@@ -94,19 +97,20 @@
 
     <!-- ===== FOOTER ===== -->
     <footer class="footer">
-    <div class="footer-content">
+        <div class="footer-content">
 
-        <div class="footer-top">
-            <div class="footer-logo">
-                <span>Guuds</span>
+            <div class="footer-top">
+                <div class="footer-logo">
+                    <span>Guuds</span>
+                </div>
+                <span class="footer-tagline">K-pop Community Market</span>
             </div>
-            <span class="footer-tagline">K-pop Community Market</span>
-        </div>
 
-        <a href="About.html" class="footer-link">About</a>
-    </div>
-</footer>
+            <a href="About.html" class="footer-link">About</a>
+        </div>
+    </footer>
 
     <script src="Advance_Search.js"></script>
 </body>
+
 </html>

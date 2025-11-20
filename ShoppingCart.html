@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart | Guuds</title>
+    <link rel="stylesheet" href="ShoppingCart.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ===== NAVBAR (ใช้ของเดิม) ===== -->
+    <header class="navbar">
+        <div class="nav-inner">
+            <div class="logo">
+                <span class="logo-pill">Guuds</span>
+                <span class="gradient-text">K-pop Community Market</span>
+            </div>
+
+            <nav class="nav-links">
+                <a href="Home.html">Home</a>
+                <a href="Marketplace.html">Marketplace</a>
+                <a href="Search.html">Search</a>
+                <a href="Community.html">Communities</a>
+                <a href="About.html">Team</a>
+            </nav>
+
+            <div class="circle">
+                <i class="material-icons">person</i>
+            </div>
+        </div>
+    </header>
+
+
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <div class="cart-container">
+
+        <h1 class="title">Shopping cart</h1>
+
+        <div class="cart-box">
+
+            <div class="checkbox-wrapper">
+                <input type="checkbox" id="item-select" checked>
+            </div>
+
+            <img class="cart-image" src="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg">
+
+            <div class="cart-info">
+                <p class="item-name">IU</p>
+                <p class="item-price">฿ 10</p>
+            </div>
+
+            <div class="quantity-box">
+                <button class="qty-btn" id="minus">−</button>
+                <span id="qty">1</span>
+                <button class="qty-btn" id="plus">+</button>
+            </div>
+
+        </div>
+
+
+        <div class="actions">
+            <button class="btn-confirm" onclick="location.href='02Payment.html'">Confirm</button>
+            <button class="btn-back" onclick="location.href='Marketplace.html'">Back</button>
+        </div>
+
+
+
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+
+            <div class="footer-top">
+                <div class="footer-logo"><span>Guuds</span></div>
+                <span class="footer-tagline">K-pop Community Market</span>
+            </div>
+
+            <a href="About.html" class="footer-link">About</a>
+
+        </div>
+    </footer>
+
+    <script src="ShoppingCart.js"></script>
+</body>
+
+</html>

@@ -4,396 +4,57 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Search | Guuds K-pop</title>
-<<<<<<< HEAD
-    <style>
-        /* === 1. CSS Variables and Base Styles (Guuds Theme) === */
-        :root {
-            /* General Theme Colors */
-            --vibrant-purple: #845ff4; 
-            --vibrant-pink: #ef5da8; 
-            --link-blue: #3603d1; 
-            --active-link-bg: #e4e4ff;
-            --white: #fff;
-            --secondary-bg: #f3f4f6; 
-            
-            /* Gradients */
-            --logo-gradient: linear-gradient(90deg, var(--vibrant-pink) 0%, var(--vibrant-purple) 100%);
-            --link-text-gradient: linear-gradient(92deg, rgba(132, 95, 244, 1) 12%, rgba(239, 93, 168, 1) 65%); 
-            --action-button-gradient: linear-gradient(90deg, #704cd0 0%, #d84c98 100%); 
-            --search-button-gradient: linear-gradient(90deg, #996eff 0%, #b258ed 100%); /* Adjusted gradient for Search button */
-            --search-title-gradient: linear-gradient(90deg, #ef5da8 0%, #845ff4 100%);
 
-            /* Backgrounds (Using placeholder paths) */
-            --header-bg-url: url('https://c.animaapp.com/mhrcnimxAJQP9m/img/rectangle-56.png');
-            --footer-bg-url: url('https://c.animaapp.com/mi1npewox6dlCb/img/rectangle-57.svg');
-            
-            /* Animation Delay Prefix */
-            --animation-delay: 0ms;
-        }
+    <!-- Google Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Helvetica', Arial, sans-serif;
-        }
-
-        body {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            background-color: var(--white);
-            color: #000;
-        }
-        
-        /* --- Animation Keyframes --- */
-        @keyframes fade-in {
-            from { opacity: 0; transform: translateY(-1rem); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .animated-element {
-            opacity: 0;
-            transform: translateY(-1rem);
-            animation: fade-in 0.6s ease-out forwards;
-            animation-delay: var(--animation-delay, 0ms);
-        }
-
-        /* === 2. Header / Navigation Styles (Adopted) === */
-        .header {
-            width: 100%;
-            height: 123px;
-            background-image: var(--header-bg-url);
-            background-size: cover;
-            background-position: center;
-            border-bottom: 1px solid #ccc;
-            position: sticky;
-            top: 0;
-            z-index: 50;
-        }
-        
-        .header-nav-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 44px;
-            height: 100%;
-        }
-
-        .header .logo-tagline {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem; 
-        }
-
-        .header .logo-box {
-            width: 104px;
-            height: 36px; 
-            border-radius: 10px;
-            background: var(--logo-gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .header .logo-text {
-            font-weight: 800; 
-            color: var(--white);
-            font-size: 25.8px;
-            white-space: nowrap;
-        }
-        
-        .header .tagline-text {
-            font-weight: 400; 
-            font-size: 26.6px; 
-            color: #000;
-            white-space: nowrap;
-        }
-
-        .nav-avatar-group {
-            display: flex; 
-            align-items: center; 
-            gap: 2rem;
-        }
-
-        .header-links {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .header-links a {
-            text-decoration: none;
-            font-weight: 400; 
-            font-size: 20.6px;
-            color: #000;
-            transition: all 0.2s;
-            padding: 4px 12px;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-        
-        .header-links a:not(.active-link):hover {
-            color: var(--link-blue);
-        }
-
-        .header-links .active-link {
-            color: var(--link-blue);
-            background-color: var(--active-link-bg);
-            font-weight: 500; 
-        }
-
-        .header-avatar img {
-            width: 40px;
-            height: 40px;
-            border-radius: 9999px;
-        }
-
-        /* === 3. Main Content: Search Page Styles === */
-        main {
-            flex-grow: 1; 
-            padding: 2rem 44px 0 44px; /* Maintain horizontal padding */
-        }
-        
-        .search-title {
-            font-weight: bold;
-            font-size: 52px;
-            background-image: var(--search-title-gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 2rem; 
-        }
-        
-        .search-container {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            width: 100%;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        /* Search Input Bar */
-        .input-group {
-            position: relative;
-            width: 100%;
-            max-width: 1000px; /* Max width matching the image feel */
-            margin-bottom: 1rem;
-        }
-
-        .search-input {
-            width: 100%;
-            height: 60px;
-            border: 1px solid #d9d9d9; 
-            border-radius: 10px;
-            padding: 0 60px 0 20px; /* Padding for text and icon */
-            font-size: 20px;
-            outline: none;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            transition: border-color 0.2s;
-        }
-        .search-input:focus {
-            border-color: var(--vibrant-purple);
-        }
-
-        .search-icon-btn {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 5px;
-        }
-        .search-icon-svg {
-            width: 24px;
-            height: 24px;
-            color: #888;
-        }
-        
-        /* Advanced Search and Button Group */
-        .action-group {
-            display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            width: 100%;
-            max-width: 1000px;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .advance-search-link {
-            font-size: 18px;
-            color: #7d7d7d; /* สีข้อความเทา */
-            font-weight: 500;
-            transition: color 0.2s;
-        
-            /* **FIXED:** เพิ่มขีดเส้นใต้สีเทาอ่อน */
-            text-decoration: none; /* ลบขีดเส้นใต้ default ของลิงก์ออก */
-            border-bottom: 2px solid #d0d0d0; /* ขีดเส้นใต้สีเทาอ่อนและหนา 2px */
-            padding-bottom: 2px; /* เพิ่มช่องว่างเล็กน้อยระหว่างข้อความกับเส้น */
-        }
-        .advance-search-link:hover {
-            color: var(--link-blue);
-            border-bottom-color: #d0d0d0;
-        }
-
-        .search-btn {
-            width: 120px;
-            height: 40px;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--white);
-            background-image: var(--search-button-gradient);
-            cursor: pointer;
-            transition: opacity 0.2s;
-        }
-        .search-btn:hover {
-            opacity: 0.9;
-        }
-
-        /* --- Footer Styles (Adopted) --- */
-        .footer-section {
-            width: 100%;
-            /* Removed fixed height to allow content to define height */
-            background-image: var(--footer-bg-url);
-            background-size: cover;
-            background-position: center;
-            margin-top: auto;
-            position: relative;
-            padding-top: 0;
-        }
-
-        .footer-content-wrapper {
-            padding: 40px 64px 30px 64px; /* pt-14 px-16 */
-            width: auto; 
-        }
-
-        .footer-logo-tagline {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem; /* gap-3 */
-            margin-top: 0px; 
-            margin-bottom: 16px;
-        }
-
-        .footer-logo-box {
-            width: 104px;
-            height: 35px;
-            border-radius: 10px;
-            background: var(--logo-gradient);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .footer-logo-text {
-            font-weight: 800;
-            color: var(--white);
-            font-size: 25.8px;
-            white-space: nowrap;
-        }
-
-        .footer-tagline-text {
-            font-weight: 300;
-            color: #000;
-            font-size: 26.6px;
-        }
-
-        .footer-nav {
-            display: flex;
-            flex-direction: column;
-            gap: 0.15rem; /* gap-2 */
-            margin-bottom: 48px; /* mb-12 */
-        }
-
-        .footer-nav a {
-            text-decoration: none;
-            /* Gradient Text Styling (Using the correct vibrant gradient) */
-            background-image: var(--link-text-gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            
-            font-weight: bold; 
-            font-size: 28px;
-            letter-spacing: -0.84px;
-            transition: opacity 0.3s;
-            /* Ensures text is on one line and takes full text width */
-            width: auto; 
-            white-space: nowrap; 
-            height: 38px;
-            display: flex;
-            align-items: center;
-        }
-        .footer-nav a:hover {
-            opacity: 0.8;
-        }
-
-        .footer-social-icons img {
-            width: 149px;
-            height: 17px;
-        }
-    </style>
-=======
+    <!-- CSS -->
     <link rel="stylesheet" href="Search.css" />
->>>>>>> 06ba5535ad5ff2f560b2f160808ded91aa9a6e3c
 </head>
 
 <body>
-
-    <header class="header">
-        <div class="header-nav-container">
-            <div class="logo-group animated-element" style="--animation-delay:0ms">
-                <div class="logo-tagline">
-                    <div class="logo-box">
-                        <span class="logo-text">Guuds</span>
-                    </div>
-                    <span class="tagline-text">K-pop Community Market</span>
-                </div>
+    <header class="navbar">
+        <div class="nav-inner">
+            <div class="logo">
+                <span class="logo-pill">Guuds</span>
+                <span class="gradient-text">K-pop Community Market</span>
             </div>
 
-            <div class="nav-avatar-group animated-element" style="--animation-delay:200ms">
-                <nav id="header-nav" class="header-links"></nav>
+            <nav class="nav-links">
+                <a href="Home.html">Home</a>
+                <a href="Marketplace.html">Marketplace</a>
+                <a href="Search.html" class="active">Search</a>
+                <a href="Community.html">Communities</a>
+                <a href="About.html">Team</a>
+            </nav>
 
-                <div class="header-avatar">
-                    <img 
-                        alt="User avatar"
-                        src="https://c.animaapp.com/mi1npewox6dlCb/img/generic-avatar.svg"
-                    />
-                </div>
+            <div class="circle">
+                <i class="material-icons" onclick="window.location.href='UserProfile-Unverify.html'">person</i>
             </div>
         </div>
     </header>
 
+    <!-- === MAIN SEARCH === -->
     <main>
         <div class="search-container">
-            <h1 class="search-title animated-element" style="--animation-delay:300ms">
-                Search
-            </h1>
+            <h1 class="search-title">Search</h1>
 
-            <div class="input-group animated-element" style="--animation-delay:400ms">
+            <div class="input-group">
                 <input type="text" placeholder="Search" class="search-input" />
                 <button class="search-icon-btn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon-svg">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
+                    <span class="material-icons search-icon">search</span>
                 </button>
             </div>
 
-            <div class="action-group animated-element" style="--animation-delay:500ms">
+            <div class="action-group">
                 <a href="Advance_Search.html" class="advance-search-link">Advance Search</a>
                 <button class="search-btn">Search</button>
             </div>
         </div>
     </main>
 
-    <footer id="footer-section" class="footer-section">
+    <!-- === FOOTER === -->
+    <footer class="footer-section">
         <div class="footer-content-wrapper">
             <div class="footer-logo-tagline">
                 <div class="footer-logo-box">
@@ -408,10 +69,6 @@
         </div>
     </footer>
 
-<<<<<<< HEAD
-    
-=======
     <script src="Search.js"></script>
->>>>>>> 06ba5535ad5ff2f560b2f160808ded91aa9a6e3c
 </body>
 </html>

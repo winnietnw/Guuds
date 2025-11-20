@@ -192,15 +192,47 @@ body {
 }
 
 .section-title {
+    font-weight: 700;
     font-size: 52px;
-    font-weight: bold;
     margin-bottom: 32px;
+    color: #000;
+}
+
+.section-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+}
+
+.section-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 24px;
+    height: 44px;
+    border-radius: 25px;
+    background: linear-gradient(90deg, #ef5da8, #845ff4);
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+}
+
+.section-button svg {
+    stroke: #fff;
+    margin-left: 8px;
 }
 
 .scroll-area {
-    overflow-x: auto;
     width: 100%;
+    overflow-x: auto;
     padding-bottom: 16px;
+}
+
+.scroll-area::-webkit-scrollbar {
+    display: none;
 }
 
 .scroll-container {
@@ -243,9 +275,12 @@ body {
 
 /* Marketplace */
 .marketplace-card-wrapper {
-    min-width: 374px;
-    border: 1px solid #d9d9d9;
+    min-width: 374px;    
     border-radius: 15px;
+    border: 1px solid #d9d9d9;
+    overflow: hidden;
+    background: #fff;
+    flex-shrink: 0;
 }
 
 .marketplace-card-image {
@@ -260,27 +295,55 @@ body {
     right: 19px;
     height: 29px;
     padding: 0 16px;
-    background: #4CAF50;
-    color: white;
+    background: #4caf50;
+    color: #fff;
     border-radius: 5px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
 }
 
 .marketplace-card-title {
     position: absolute;
     bottom: 19px;
     left: 19px;
+    color: #fff;
     font-size: 32px;
-    color: white;
+    font-weight: 600;
+    letter-spacing: -0.5px;
 }
 
 .marketplace-card-body {
     padding: 19px;
 }
+.marketplace-card-description {
+    font-size: 14px;
+    color: #585858;
+    font-weight: 500;
+    margin-bottom: 7px;
+}
+.marketplace-card-members {
+    font-size: 14px;
+    color: #585858;
+    margin-bottom: 16px;
+}
 
 .marketplace-card-actions {
     display: flex;
-    gap: 5px;
+    gap: 8px;
 }
+
+.marketplace-card-actions button {
+    height: 29px;
+    padding: 0 16px;
+    border-radius: 5px;
+    font-size: 14px;
+    border: none !important;
+    background: #585858;
+    color: #fff;
+    cursor: pointer;
+}
+
 
 .join-btn {
     background: #585858;

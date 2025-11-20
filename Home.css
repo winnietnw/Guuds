@@ -268,16 +268,26 @@ main {
 }
 
 .section-button {
-    height: 33px;
-    width: 250px;
-    background: var(--action-button-gradient);
-    border: none;
-    border-radius: 10px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    padding: 0 24px;
+    height: 44px;
+    border-radius: 25px;
+    background: linear-gradient(90deg, #ef5da8, #845ff4);
+    color: #fff;
+    font-weight: 600;
+    font-size: 18px;
+    text-decoration: none;
+    border: none;
     cursor: pointer;
 }
+
+.section-button svg {
+    stroke: #fff;
+    margin-left: 8px;
+}
+
 
 .section-button:hover {
     opacity: 0.9;

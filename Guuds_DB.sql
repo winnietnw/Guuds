@@ -17,7 +17,7 @@ CREATE TABLE `Admin` (
 ) ENGINE=InnoDB;
 
 CREATE TABLE `User` (
-    UserID INT PRIMARY KEY AUTO_INCREMENT,
+    UserID INT PRIMARY KEY,
     UserFname VARCHAR(50),
     UserLname VARCHAR(50),
     Username VARCHAR(50) NOT NULL UNIQUE,
@@ -335,3 +335,7 @@ BEGIN
 END //
 
 DELIMITER ;
+
+
+
+select * from user

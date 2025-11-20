@@ -44,9 +44,9 @@ app.get("/api/users/:id", (req, res) => {
 app.post("/api/users", (req, res) => {
   const data = req.body;
   const allowed = [
-    "UserFname","UserLname","Username","UserEmail","UserPhoneNumber",
-    "UserPassword","UserA_Street","UserA_City","UserA_Province","UserA_Country","UserA_PostalCode",
-    "UserDOB","UserS_Active","UserS_Suspended"
+    "UserFname", "UserLname", "Username", "UserEmail", "UserPhoneNumber",
+    "UserPassword", "UserA_Street", "UserA_City", "UserA_Province", "UserA_Country", "UserA_PostalCode",
+    "UserDOB", "UserS_Active", "UserS_Suspended"
   ];
   const insert = {};
   allowed.forEach(k => { if (data[k] !== undefined) insert[k] = data[k]; });
@@ -70,9 +70,9 @@ app.patch("/api/users/:id", (req, res) => {
   const id = req.params.id;
   const body = req.body;
   const allowed = [
-    "UserFname","UserLname","Username","UserEmail","UserPhoneNumber",
-    "UserPassword","UserA_Street","UserA_City","UserA_Province","UserA_Country","UserA_PostalCode",
-    "UserDOB","UserS_Active","UserS_Suspended"
+    "UserFname", "UserLname", "Username", "UserEmail", "UserPhoneNumber",
+    "UserPassword", "UserA_Street", "UserA_City", "UserA_Province", "UserA_Country", "UserA_PostalCode",
+    "UserDOB", "UserS_Active", "UserS_Suspended"
   ];
   const update = {};
   allowed.forEach(k => { if (body[k] !== undefined) update[k] = body[k]; });
@@ -90,9 +90,26 @@ app.patch("/api/users/:id", (req, res) => {
 });
 
 app.delete("/api/users/:id", (req, res) => {
-  pool.query("DELETE FROM `User` WHERE UserID = ?", [req.params.id], (err, result) => {
-    if (err) return res.status(500).json({ error: err.message || err });
-    res.json({ deletedRows: result.affectedRows });
+  const id = req.params.id;
+
+  pool.query("DELETE FROM `User` WHERE UserID = ?", [id], (err) => {
+    if (err) return res.status(500).json({ error: err.message });
+    pool.query("ALTER TABLE `User` AUTO_INCREMENT = 1", (err2) => {
+      if (err2) return res.status(500).json({ error: err2.message });
+      pool.query(
+        `
+        SET @count = 0;
+        UPDATE User SET UserID = (@count:=@count+1) ORDER BY UserID;
+        `,
+        (err3) => {
+          if (err3) return res.status(500).json({ error: err3.message });
+
+          pool.query("ALTER TABLE `User` AUTO_INCREMENT = 1", () => {
+            res.json({ message: "User deleted and IDs reordered" });
+          });
+        }
+      );
+    });
   });
 });
 

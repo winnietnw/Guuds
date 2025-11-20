@@ -14,13 +14,6 @@ const marketplaceItems = [
     { id: 12, title: "Mini Photobook", price: "$28", image: "https://c.animaapp.com/mhwur9gvn1iO6p/img/image.svg" },
 ];
 
-const navLinks = [
-    { label: "Home", href: "Home.html", active: false },
-    { label: "Marketplace", href: "Market_Place.html", active: true },
-    { label: "Search", href: "Search.html", active: false },
-    { label: "Communities", href: "Community.html", active: false },
-    { label: "Team", href: "About.html", active: false },
-];
 
 const sortOptions = [
     { label: "Newest", active: true},

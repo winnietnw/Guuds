@@ -36,75 +36,73 @@ body {
     flex-direction: column;
 }
 
-/* ============================================================
-   HEADER
-   ============================================================ */
-.header {
-    height: 123px;
-    background-image: url('https://c.animaapp.com/mhrcnimxAJQP9m/img/rectangle-56.png');
-    background-size: cover;
-    padding: 0 44px;
-    border-bottom: 1px solid #ccc;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.header-content-wrapper {
+.navbar {
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    border-bottom: 1px solid #e5e7eb;
+    background: white;
 }
 
-.logo-tagline {
+.nav-inner {
+    height: 70px;
+    max-width: 1150px;
+    margin: auto;
     display: flex;
     align-items: center;
+    padding: 0 20px;
+    gap: 20px;
 }
 
-.logo-box {
-    width: 104px;
-    height: 36px;
-    background: var(--logo-gradient);
+.logo-pill {
+    background: linear-gradient(90deg, #EF5DA8, #845FF4);
+    padding: 8px 16px;
+    color: white;
     border-radius: 10px;
-    display: flex;
+    font-weight: 860;
+    font-size: 25.846px;
+    width: 104px;
+    height: 35.83px;
+    display: inline-flex;
     justify-content: center;
     align-items: center;
+    margin-right: 12px;
 }
 
-.logo-text {
-    font-size: 26px;
-    font-weight: 800;
-    color: white;
-}
-
-.header-tagline-text {
-    font-size: 26px;
-    margin-left: 12px;
-}
-
-.header-nav {
+.nav-links {
     display: flex;
-    gap: 26px;
+    gap: 24px;
+    margin-left: 40px;
+    flex: 1;
 }
 
-.nav-link {
-    padding: 6px 12px;
-    font-size: 20px;
-    color: #000;
+.nav-links a {
+    color: var(--black);
     text-decoration: none;
+    padding: 8px;
+    position: relative;
+    transition: color .25s ease;
+}
+
+.nav-links a:hover {
+    background: #e5e5ff;
     border-radius: 10px;
 }
 
-.nav-link.active-bg {
-    background: var(--active-link-bg);
-    color: var(--link-blue);
+.nav-links .active {
+    background: #e5e5ff;
+    border-radius: 10px;
 }
 
-/* ============================================================
-   MAIN
-   ============================================================ */
+.circle {
+    height: 38px;
+    width: 38px;
+    background: #f4edff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
 main {
     padding: 43px 110px 120px 110px;
 }
@@ -233,9 +231,6 @@ main {
     color: white;
 }
 
-/* ============================================================
-   MODAL
-   ============================================================ */
 .modal {
     position: fixed;
     inset: 0;
@@ -329,4 +324,3 @@ main {
     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-

@@ -20,61 +20,71 @@ body {
 }
 
 /* ===== HEADER ===== */
-.header {
-    height: 120px;
-    padding: 0 50px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #ddd;
+.navbar {
+    width: 100%;
+    border-bottom: 1px solid #e5e7eb;
+    background: white;
 }
 
-.header-left {
+.nav-inner {
+    height: 70px;
+    max-width: 1150px;
+    margin: auto;
     display: flex;
     align-items: center;
-    gap: 12px;
+    padding: 0 20px;
+    gap: 20px;
 }
 
-.logo-box {
-    background: var(--gradient);
-    padding: 5px 18px;
+.logo-pill {
+    background: linear-gradient(90deg, #EF5DA8, #845FF4);
+    padding: 8px 16px;
+    color: white;
+    border-radius: 10px;
+    font-weight: 860;
+    font-size: 25.846px;
+    width: 104px;
+    height: 35.83px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 12px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 24px;
+    margin-left: 40px;
+    flex: 1;
+}
+
+.nav-links a {
+    color: var(--black);
+    text-decoration: none;
+    padding: 8px;
+    position: relative;
+    transition: color .25s ease;
+}
+
+.nav-links a:hover {
+    background: #e5e5ff;
     border-radius: 10px;
 }
 
-.logo-text {
-    color: white;
-    font-weight: 800;
-    font-size: 24px;
+.nav-links .active {
+    background: #e5e5ff;
+    border-radius: 10px;
 }
 
-.tagline {
-    font-size: 22px;
-    font-weight: 300;
-}
-
-.nav {
-    display: flex;
-    gap: 35px;
-}
-
-.nav a {
-    text-decoration: none;
-    font-size: 20px;
-    color: black;
-    padding: 5px 15px;
-    border-radius: 8px;
-}
-
-.nav a.active {
-    background: #e8e1ff;
-    color: #4f25ff;
-}
-
-.avatar {
-    width: 40px;
-    height: 40px;
-    background: #e2d8ff;
+.circle {
+    height: 38px;
+    width: 38px;
+    background: #f4edff;
     border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
 }
 
 /* ===== MAIN ===== */
@@ -146,19 +156,35 @@ body {
     cursor: pointer;
     font-size: 15px;
     transition: 0.2s;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    vertical-align: middle;
 }
 
-/* Hover */
-.rating-btn:hover {
-    border-color: var(--purple);
+.rating-btn .star {
+    color: #999;
+    font-size: 18px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
 }
 
-/* Selected */
+.rating-btn span {
+    line-height: 1;
+    display: flex;
+    align-items: center;
+}
+
 .rating-btn.selected {
-    background: var(--gradient);     
-    color: rgb(121, 98, 255);
+    background: var(--gradient);
     border-color: var(--purple);
-    transform: translateY(0);
+}
+
+.rating-btn.selected .star,
+.rating-btn.selected span {
+    color: white;
 }
 
 /* Availability */
@@ -247,7 +273,7 @@ body {
     font-weight: 700;
     display: inline-block;
 
-    background: var(--gradient);
+    background-image: linear-gradient(92deg, #845ff4 12%, #ef5da8 65%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;

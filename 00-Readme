@@ -1,0 +1,4 @@
+install
+npm init
+npm install express mysql2 dotenv cors
+then run on terminal "node 00DBGuuds.js"

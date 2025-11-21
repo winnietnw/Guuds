@@ -250,7 +250,48 @@ main {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     transition: transform 150ms ease-in-out;
     cursor: pointer;
+    position: relative;
 }
+
+.product-card .select-checkbox {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border: 2px solid var(--vibrant-purple);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 150ms ease;
+    z-index: 10;
+}
+
+.product-card.selected .select-checkbox {
+    background: var(--vibrant-purple);
+    border-color: var(--vibrant-purple);
+}
+
+.select-checkbox::after {
+    content: "✓";
+    font-size: 14px;
+    color: white;
+    opacity: 0;
+}
+
+.product-card.selected .select-checkbox::after {
+    opacity: 1;
+}
+
+.product-card.selected {
+    border: 2px solid var(--vibrant-purple);
+    transform: scale(1.02);
+}
+
+
 .product-card:hover { transform: scale(1.02); }
 .card-content-wrapper {
     display: flex;

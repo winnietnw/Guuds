@@ -38,3 +38,19 @@ document.addEventListener("DOMContentLoaded", () => {
     renderNavLinks();
     initAnimations();
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const searchInput = document.querySelector(".search-input");
+    const searchBtn = document.querySelector(".search-btn");
+
+    searchBtn.addEventListener("click", () => {
+        const keyword = searchInput.value.trim();
+
+        if (keyword === "") {
+            alert("Please enter a search term before searching.");
+            return;
+        }
+        window.location.href = `AfterSearch2.html`;
+    });
+});
+

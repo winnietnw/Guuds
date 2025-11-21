@@ -5,13 +5,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Advance Search</title>
+
     <link rel="stylesheet" href="Advance_Search.css">
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
 <body>
-
-    <header class="navbar">
+    <header>
         <div class="nav-inner">
             <div class="logo">
                 <span class="logo-pill">Guuds</span>
@@ -32,20 +33,20 @@
         </div>
     </header>
 
-    <!-- ===== MAIN CONTENT ===== -->
-    <div class="container">
-        <h1 class="page-title">Advance Search</h1>
+    <div class="container animated-element" style="--animation-delay:120ms">
 
-        <form class="search-form">
+        <h1 class="page-title animated-element" style="--animation-delay:180ms">
+            Advance Search
+        </h1>
 
-            <!-- Name -->
-            <div class="form-row">
+        <form class="search-form animated-element" style="--animation-delay:240ms">
+
+            <div class="form-row animated-element" style="--animation-delay:300ms">
                 <div class="form-label">Name</div>
                 <input type="text" id="name" class="input">
             </div>
 
-            <!-- Category -->
-            <div class="form-row">
+            <div class="form-row animated-element" style="--animation-delay:350ms">
                 <div class="form-label">Category</div>
                 <select id="category" class="input">
                     <option value="">Select Category</option>
@@ -57,14 +58,11 @@
                 </select>
             </div>
 
-            <!-- Community -->
-            <div class="form-row">
+            <div class="form-row animated-element" style="--animation-delay:400ms">
                 <div class="form-label">Community</div>
                 <input type="text" id="community" class="input">
             </div>
-
-            <!-- Rating -->
-            <div class="form-row">
+            <div class="form-row animated-element" style="--animation-delay:450ms">
                 <div class="form-label">Rating</div>
 
                 <div class="rating-group">
@@ -76,8 +74,7 @@
                 </div>
             </div>
 
-            <!-- Availability -->
-            <div class="form-row">
+            <div class="form-row animated-element" style="--animation-delay:500ms">
                 <div class="form-label">Availability</div>
 
                 <div class="availability">
@@ -86,8 +83,7 @@
                 </div>
             </div>
 
-            <!-- Buttons -->
-            <div class="actions">
+            <div class="actions animated-element" style="--animation-delay:550ms">
                 <button type="button" class="btn-search" id="searchBtn">Search</button>
                 <button type="button" class="btn-clear" id="clearBtn">Clear</button>
             </div>
@@ -95,8 +91,7 @@
         </form>
     </div>
 
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer">
+    <footer class="footer animated-element" style="--animation-delay:600ms">
         <div class="footer-content">
 
             <div class="footer-top">
@@ -109,7 +104,6 @@
             <a href="About.html" class="footer-link">About</a>
         </div>
     </footer>
-
     <script src="Advance_Search.js"></script>
 </body>
 

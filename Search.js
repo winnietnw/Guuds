@@ -1,4 +1,13 @@
-// --- Navigation Links ---
+document.addEventListener("DOMContentLoaded", () => {
+    const animatedElements = document.querySelectorAll(".animated-element");
+
+    animatedElements.forEach(el => {
+        const delay = el.style.getPropertyValue("--animation-delay") || "0ms";
+        el.classList.add("animate-start");
+        el.style.animationDelay = delay;
+    });
+});
+
 const navLinks = [
     { label: "Home", href: "Home.html", active: false },
     { label: "Marketplace", href: "Market_Place.html", active: false },

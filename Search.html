@@ -4,16 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Search | Guuds K-pop</title>
-
-    <!-- Google Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-
-    <!-- CSS -->
     <link rel="stylesheet" href="Search.css" />
 </head>
 
 <body>
-    <header class="navbar">
+
+    <header>
         <div class="nav-inner">
             <div class="logo">
                 <span class="logo-pill">Guuds</span>
@@ -34,39 +31,49 @@
         </div>
     </header>
 
-    <!-- === MAIN SEARCH === -->
-    <main>
-        <div class="search-container">
-            <h1 class="search-title">Search</h1>
+    <main class="animated-element" style="--animation-delay:100ms">
+        <div class="search-container animated-element" style="--animation-delay:150ms">
 
-            <div class="input-group">
+            <h1 class="search-title animated-element" style="--animation-delay:200ms">
+                Search
+            </h1>
+
+            <div class="input-group animated-element" style="--animation-delay:250ms">
                 <input type="text" placeholder="Search" class="search-input" />
                 <button class="search-icon-btn">
                     <span class="material-icons search-icon">search</span>
                 </button>
             </div>
 
-            <div class="action-group">
+            <div class="action-group animated-element" style="--animation-delay:300ms">
                 <a href="Advance_Search.html" class="advance-search-link">Advance Search</a>
                 <button class="search-btn">Search</button>
             </div>
+
         </div>
     </main>
 
-    <!-- === FOOTER === -->
-    <footer class="footer-section">
+    <footer id="footer-section" class="footer-section animated-element" style="--animation-delay:350ms">
+
         <div class="footer-content-wrapper">
-            <div class="footer-logo-tagline">
+
+            <div id="footer-logo-tagline" class="footer-logo-tagline animated-element"
+                style="--animation-delay:400ms">
                 <div class="footer-logo-box">
                     <span class="footer-logo-text">Guuds</span>
                 </div>
                 <span class="footer-tagline-text">K-pop Community Market</span>
             </div>
 
-            <nav class="footer-nav">
-                <a href="About.html">About</a>
+            <nav id="footer-nav" class="footer-nav animated-element" style="--animation-delay:450ms">
+                <a href="About.html" class="footer-link">About</a>
             </nav>
+
+            <div id="footer-social-icons" class="footer-social-icons animated-element"
+                style="--animation-delay:500ms"></div>
+
         </div>
+
     </footer>
 
     <script src="Search.js"></script>

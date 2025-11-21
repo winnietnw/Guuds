@@ -35,7 +35,7 @@
 .navbar {
     width: 100%;
     border-bottom: 1px solid #e5e7eb;
-    background: #fff;
+    background: white;
 }
 
 .nav-inner {
@@ -49,17 +49,18 @@
 }
 
 .logo-pill {
-    background: var(--gradient);
+    background: linear-gradient(90deg, #EF5DA8, #845FF4);
     padding: 8px 16px;
     color: white;
     border-radius: 10px;
-    font-weight: 800;
-    font-size: 24px;
-}
-
-.gradient-text {
-    font-size: 22px;
-    font-weight: 300;
+    font-weight: 860;
+    font-size: 25.846px;
+    width: 104px;
+    height: 35.83px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 12px;
 }
 
 .nav-links {
@@ -70,21 +71,33 @@
 }
 
 .nav-links a {
-    color: black;
+    color: var(--black);
     text-decoration: none;
     padding: 8px;
+    position: relative;
+    transition: color .25s ease;
+}
+
+.nav-links a:hover {
+    background: #e5e5ff;
+    border-radius: 10px;
+}
+
+.nav-links .active {
+    background: #e5e5ff;
+    border-radius: 10px;
 }
 
 .circle {
-    width: 38px;
     height: 38px;
+    width: 38px;
     background: #f4edff;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 18px;
 }
-
 /* ===== MAIN ===== */
 .page-container {
     padding: 30px 180px;

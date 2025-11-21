@@ -1,3 +1,13 @@
+document.addEventListener("DOMContentLoaded", () => {
+    const animatedElements = document.querySelectorAll(".animated-element");
+
+    animatedElements.forEach(el => {
+        const delay = el.style.getPropertyValue("--animation-delay") || "0ms";
+        el.classList.add("animate-start");
+        el.style.animationDelay = delay;
+    });
+});
+
 const albumIUItems = [
     { id: 1, title: "IU Album - Palette", price: "$25", image: "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg", link: "ProductDetail.html" },
     { id: 2, title: "IU Concert Photobook", price: "$32", image: "https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg" },

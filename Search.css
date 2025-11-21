@@ -14,6 +14,21 @@
     --footer-bg-url: url('https://c.animaapp.com/mi1npewox6dlCb/img/rectangle-57.svg');
 }
 
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(-1rem); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animated-element {
+    opacity: 0;
+    transform: translateY(-1rem);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-start {
+    animation: fade-in 0.6s ease-out forwards;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -225,4 +240,41 @@ main {
     font-weight: bold;
     text-decoration: none;
 }
+
+/* Search results (simple card layout) */
+.search-results {
+    max-width: 1100px;
+    margin: 24px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    padding: 0 44px 40px 44px;
+}
+
+.result-card {
+    background: #fff;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    gap: 12px;
+    padding: 12px;
+    align-items: center;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+.result-image {
+    width: 90px;
+    height: 90px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.result-info { flex: 1; }
+.result-title { font-weight: 600; margin-bottom: 4px; }
+.result-type { font-size: 13px; color: #666; margin-bottom: 6px; }
+.result-price { font-weight: 700; color: #111; }
+.no-results { max-width:1100px; margin:16px auto; padding:12px 44px; color:#666; }
 
